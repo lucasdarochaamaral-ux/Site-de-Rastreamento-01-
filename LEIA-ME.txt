@@ -1,0 +1,40 @@
+PROJETO CONNECTWEB - SITE PROFISSIONAL
+========================================
+
+INSTRUÇÕES PARA EXECUÇÃO NO VS CODE WINDOWS:
+
+1. Abra o projeto no VS Code
+2. Abra o terminal integrado (Ctrl + `)
+3. Execute os comandos na seguinte ordem:
+
+npm install --legacy-peer-deps
+npm run dev
+
+4. O projeto será executado em http://localhost:5173/
+
+FUNCIONALIDADES IMPLEMENTADAS:
+- Site responsivo completo
+- Formulário EmailJS integrado
+- Modo escuro funcional
+- Navegação suave entre seções
+- Design profissional e moderno
+
+TECNOLOGIAS UTILIZADAS:
+- React + Vite
+- Tailwind CSS
+- Lucide Icons
+- EmailJS para formulário de contato
+
+ESTRUTURA DO PROJETO:
+- src/App.jsx - Componente principal
+- src/App.css - Estilos customizados
+- src/assets/ - Imagens e recursos
+- index.html - Template HTML principal
+
+CONFIGURAÇÕES ESPECIAIS:
+- tsconfig.app.json incluído para compatibilidade
+- EmailJS configurado com credenciais específicas
+- Formulário único sem redirecionamentos para WhatsApp
+
+Para mais informações, consulte a documentação do projeto.
+

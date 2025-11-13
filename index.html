@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sites Profissionais para Empresas | ConnectWeb</title>
+    <meta name="description" content="Crie seu site profissional com e-mail personalizado, WhatsApp integrado e suporte técnico. Planos acessíveis e entrega rápida." />
+    <meta name="keywords" content="criação de sites para empresas, sites profissionais responsivos, venda de sites prontos, empresa que faz sites, site com e-mail personalizado, site com WhatsApp integrado, planos de sites acessíveis" />
+    <meta name="author" content="ConnectWeb" />
+    <meta property="og:title" content="Sites Profissionais para Empresas | ConnectWeb" />
+    <meta property="og:description" content="Crie seu site profissional com e-mail personalizado, WhatsApp integrado e suporte técnico. Planos acessíveis e entrega rápida." />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+        emailjs.init("lWr4FDwEmFJBRrC5Q");
+      })();
+
+      // Aguardar o carregamento completo da página
+      window.addEventListener('load', function() {
+        const form = document.getElementById("formulario-contato");
+        if (form) {
+          form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            emailjs.sendForm("service_uaf8zg8", "template_c04hfeu", this)
+              .then(() => {
+                alert("Mensagem enviada com sucesso!");
+                this.reset();
+              }, (error) => {
+                alert("Erro ao enviar. Tente novamente.");
+                console.log(error);
+              });
+          });
+        }
+      });
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
