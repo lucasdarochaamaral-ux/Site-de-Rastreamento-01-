@@ -58,7 +58,7 @@ function App() {
       setIsScrolled(window.scrollY > 50)
       
       // Detectar seção ativa
-      const sections = ['sites', 'planos', 'portfolio', 'formulario', 'contato']
+      const sections = ['sites', 'planos', 'portfolio', 'contato', 'formulário']
       const current = sections.find(section => {
         const element = document.getElementById(section)
         if (element) {
@@ -309,7 +309,7 @@ const carouselImages2 = [
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <img
-  src="https://i.ibb.co/s9KTktyS/CABE-ALHO-RODA-P-LOGO-DEFINITIVO.png"
+  src="https://i.ibb.co/C5gyPxjz/CABE-ALHO-RODA-P-LOGO-9.png"
   alt="Logo ConnectWeb"
   className={`transition-all duration-300 ${isScrolled ? 'w-47 h-auto' : 'w-50 h-auto'}`}
 />
@@ -321,8 +321,8 @@ const carouselImages2 = [
                 { id: 'sites', label: 'Sites profissionais' },
                 { id: 'planos', label: 'Planos' },
                 { id: 'portfolio', label: 'Portfólio' },
-                { id: 'formulario', label: 'Formulário' },
-                { id: 'contato', label: 'Contato' }
+                { id: 'contato', label: 'Contato' },
+                { id: 'formulario', label: 'Formulário' }
               ].map((item) => (
                 <button
                   key={item.id}
@@ -333,7 +333,7 @@ const carouselImages2 = [
                 >
                   {/* 🔗 CORREÇÃO CABEÇALHO: Linha gradativa ao invés de mudança de cor */}
                   {item.label}
-                  <div className={`absolute bottom-0 left-0 h-0.5 bg-green-500 transition-all duration-300 ease-in-out ${
+                  <div className={`absolute bottom-0 left-0 h-0.5 bg-orange-500 transition-all duration-300 ease-in-out ${
                     activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}></div>
                 </button>
@@ -395,14 +395,14 @@ const carouselImages2 = [
                   { id: 'sites', label: 'Sites profissionais' },
                   { id: 'planos', label: 'Planos' },
                   { id: 'portfolio', label: 'Portfólio' },
-                  { id: 'formulario', label: 'Formulário' },
-                  { id: 'contato', label: 'Contato' }
+                  { id: 'contato', label: 'Contato' },
+                  { id: 'formulario', label: 'Formulário' }
                 ].map((item) => (
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
                     className={`text-left font-medium transition-colors duration-300 ${
-                      isDarkMode ? 'text-gray-300 hover:text-green-400' : 'text-gray-700 hover:text-green-500'
+                      isDarkMode ? 'text-gray-300 hover:text-orange-400' : 'text-gray-700 hover:text-orange-500'
                     }`}
                   >
                     {item.label}
@@ -444,7 +444,7 @@ const carouselImages2 = [
           loading="eager"
         />
         {/* Overlay sutil para legibilidade do texto */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
         
         <div className="relative container mx-auto px-5 sm:px-6 lg:px-8 py-20 lg:py-32">
           {/* ✅ CORREÇÃO 1.2: Padding lateral consistente na hero section */}
@@ -453,7 +453,7 @@ const carouselImages2 = [
               {/* 🚫 CORREÇÃO 1: Botão "Seu Novo Site Começa Aqui!" removido conforme solicitado */}
               
 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white">
-Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um Site Moderno </span> e Presonalizado.
+  Seu Negócio <span className="text-orange-400 drop-shadow-lg font-black">Com um Site Moderno</span> e Personal
 </h1>
               
               <p className="text-base sm:text-lg lg:text-xl text-blue-100 font-medium leading-relaxed">
@@ -463,7 +463,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
 
               <div className="flex flex-col sm:flex-row gap-4">
                 {/* ✅ CORREÇÃO 3.1: Botões com altura mínima 48px e transições 0.2s ease */}
-                <Button size="lg" className="min-h-[48px] bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 ease-in-out hover:-translate-y-1"
+                <Button size="lg" className="min-h-[48px] bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 ease-in-out hover:-translate-y-1"
                   onClick={() => window.open('https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20saber%20mais%20sobre%20o%20servi%C3%A7o%20de%20rastreamento.&utm_source=site&utm_medium=botao&utm_campaign=geral', '_blank')}>
                   <MessageCircle className="w-5 h-5 mr-2" />
                   Quero meu site agora
@@ -482,10 +482,10 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                 {/* 🖼️ CORREÇÃO: Sombreamento interno suave adicionado */}
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4">
-                    <Monitor className="w-12 h-12 text-green-400 drop-shadow-lg" />
+                    <Monitor className="w-12 h-12 text-orange-400 drop-shadow-lg" />
                     <div>
                       <h3 className="text-2xl font-black text-white drop-shadow-md">Sites Completos</h3>
-                      <p className="text-green-300 font-bold text-lg drop-shadow-sm">apenas R$ 38,80/mês</p>
+                      <p className="text-orange-300 font-bold text-lg drop-shadow-sm">apenas R$ 38,80/mês</p>
                     </div>
                   </div>
                 </CardContent>
@@ -496,10 +496,10 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                 {/* 🖼️ CORREÇÃO: Sombreamento interno suave adicionado */}
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4">
-                    <Mail className="w-12 h-12 text-green-400 drop-shadow-lg" />
+                    <Mail className="w-12 h-12 text-orange-400 drop-shadow-lg" />
                     <div>
                       <h3 className="text-2xl font-black text-white drop-shadow-md">E-mail Profissional</h3>
-                      <p className="text-green-300 font-bold text-lg drop-shadow-sm">incluso no plano popular</p>
+                      <p className="text-orange-300 font-bold text-lg drop-shadow-sm">incluso no plano popular</p>
                     </div>
                   </div>
                 </CardContent>
@@ -524,7 +524,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
               {/* 🎯 CORREÇÃO 2: Texto branco com sombra para contraste na imagem livre */}
               Não importa se é empresa pequena ou grande.
               <br />
-              <span className="text-green-400 drop-shadow-lg">Temos o site com a identidade que você precisa.</span>
+              <span className="text-white-400 drop-shadow-lg"></span>
             </h2>
             <p className="text-xl text-white drop-shadow-md">
               {/* 🎯 CORREÇÃO 2: Parágrafo com texto branco e sombra para contraste */}
@@ -548,13 +548,13 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
               {/* ✅ CORREÇÃO 2.3: H2 com base 24px (text-2xl) responsivo */}
               São muitas as vantagens de possuir um site com a ConnectWeb
             </h2>
-            <div className="w-24 h-1 bg-green-500 mx-auto"></div>
+            <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* ✅ CORREÇÃO 4.1: Grid responsivo com empilhamento vertical no mobile */}
             {benefits.map((benefit, index) => (
-              <Card key={index} className={`text-center transition-all duration-300 ease-in-out border-2 hover:border-green-500 hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 ${
+              <Card key={index} className={`text-center transition-all duration-300 ease-in-out border-2 hover:border-orange-500 hover:shadow-xl transform hover:scale-105 hover:-translate-y-2 ${
                 isDarkMode 
                   ? 'bg-gray-800 border-gray-700' 
                   : 'bg-white border-gray-200'
@@ -563,8 +563,8 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                 <CardContent className="p-6 lg:p-8 card-content">
                   <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 floating-icon transition-colors duration-200 ${
                     isDarkMode 
-                      ? 'bg-green-500/20 text-green-400' 
-                      : 'bg-green-100 text-green-600'
+                      ? 'bg-orange-500/20 text-orange-400' 
+                      : 'bg-orange-100 text-orange-600'
                   }`}>
                     {benefit.icon}
                   </div>
@@ -586,7 +586,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
       <section id="planos" className={`section-spacing transition-colors duration-300 ${
         isDarkMode 
           ? 'bg-gradient-to-br from-gray-800 to-gray-900' 
-          : 'bg-gradient-to-br from-blue-50 to-green-50'
+          : 'bg-gradient-to-br from-blue-50 to-orange-50'
       }`}>
         {/* ✅ CORREÇÃO 1.5: Espaçamento vertical padronizado com section-spacing */}
         <div className="container mx-auto px-5 sm:px-6 lg:px-8">
@@ -612,14 +612,14 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
             {plans.map((plan, index) => (
               <Card key={index} className={`relative transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-1 hover:shadow-2xl ${
                 plan.highlight 
-                  ? `border-green-500 border-2 shadow-xl ${isDarkMode ? 'bg-gray-800' : 'bg-white'}` 
+                  ? `border-orange-500 border-2 shadow-xl ${isDarkMode ? 'bg-gray-800' : 'bg-white'}` 
                   : `border-2 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`
               }`}>
                 {/* 💰 CORREÇÃO PLANOS: Hover apenas com zoom 3D, sem mudança de cor */}
                 {plan.highlight && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
                     {/* 🪟 CORREÇÃO: Selo "MAIS POPULAR" centralizado horizontalmente */}
-                    <Badge className="bg-green-500 text-white px-6 py-2 text-sm font-semibold rounded-full shadow-lg">
+                    <Badge className="bg-orange-500 text-white px-6 py-2 text-sm font-semibold rounded-full shadow-lg">
                       MAIS POPULAR
                     </Badge>
                   </div>
@@ -630,8 +630,8 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                   }`}>{plan.name}</CardTitle>
                   <div className="mt-4">
                     <span className={`text-4xl font-bold transition-colors duration-300 ${
-                      isDarkMode ? 'text-green-400' : 'text-green-600'
-                    }`}>R$ {plan.price}</span>
+  isDarkMode ? 'text-orange-400' : 'text-orange-600'
+}`}>R$ {plan.price}</span>
                     <span className={`transition-colors duration-300 ${
                       isDarkMode ? 'text-gray-400' : 'text-gray-600'
                     }`}>{plan.period}</span>
@@ -644,7 +644,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                   <ul className="space-y-3">
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center space-x-3 slide-up" style={{animationDelay: `${featureIndex * 0.1}s`}}>
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
                         <span className={`transition-colors duration-300 ${
                           isDarkMode ? 'text-gray-300' : 'text-gray-700'
                         }`}>{feature}</span>
@@ -656,7 +656,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                     <Button 
                       className={`w-full min-h-[48px] text-white transition-all duration-200 ease-in-out transform hover:scale-105 hover:-translate-y-1 interactive-element ${
                         plan.highlight 
-                          ? 'bg-green-500 hover:bg-green-600 shadow-lg hover:shadow-xl' 
+                          ? 'bg-orange-500 hover:bg-orange-600 shadow-lg hover:shadow-xl' 
                           : 'bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl'
                       }`}
                       size="lg"
@@ -666,7 +666,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                     </Button>
                     <Button variant="outline" className={`w-full min-h-[48px] transition-all duration-200 ease-in-out transform hover:scale-105 hover:-translate-y-1 interactive-element ${
                       isDarkMode 
-                        ? 'border-green-500 text-green-400 hover:bg-green-500 hover:text-white' 
+                        ? 'border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white' 
                         : 'border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'
                     }`}>
                       {/* ✅ CORREÇÃO 3.5: Botão secundário com mesmas correções */}
@@ -736,7 +736,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
         onClick={() => setCurrentCarouselImage1(index)}
         className={`w-3 h-3 rounded-full transition-all duration-300 ${
           index === currentCarouselImage1 
-            ? 'bg-green-500 scale-125' 
+            ? 'bg-orange-500 scale-125' 
             : 'bg-white/50 hover:bg-white/75'
         }`}
       />
@@ -751,7 +751,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                       onClick={() => setCurrentCarouselImage1(index)}
                       className={`w-3 h-3 rounded-full transition-all duration-300 ${
                         index === currentCarouselImage1 
-                          ? 'bg-green-500 scale-125' 
+                          ? 'bg-orange-500 scale-125' 
                           : 'bg-white/50 hover:bg-white/75'
                       }`}
                     />
@@ -774,31 +774,31 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <CheckCircle className="w-5 h-5 text-orange-500" />
                   <span className={`text-sm lg:text-base transition-colors duration-200 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
                   }`}>Layout otimizado para mobile</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <CheckCircle className="w-5 h-5 text-orange-500" />
                   <span className={`text-sm lg:text-base transition-colors duration-200 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
                   }`}>Carregamento rápido</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <CheckCircle className="w-5 h-5 text-orange-500" />
                   <span className={`text-sm lg:text-base transition-colors duration-200 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
                   }`}>SEO otimizado</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <CheckCircle className="w-5 h-5 text-orange-500" />
                   <span className={`text-sm lg:text-base transition-colors duration-200 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
                   }`}>Tema escuro e claro (botão no cabeçalho)</span>
                 </li>
               </ul>
-              <Button className="min-h-[48px] bg-green-500 hover:bg-green-600 text-white transition-all duration-200 ease-in-out hover:-translate-y-1 interactive-element"
+              <Button className="min-h-[48px] bg-orange-500 hover:bg-orange-600 text-white transition-all duration-200 ease-in-out hover:-translate-y-1 interactive-element"
                 onClick={() => window.open('https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20saber%20mais%20sobre%20o%20servi%C3%A7o%20de%20rastreamento.&utm_source=site&utm_medium=botao&utm_campaign=geral', '_blank')}>
                 {/* ✅ CORREÇÃO 3.6: Botão com altura mínima e transições corretas */}
                 Ver mais exemplos
@@ -834,9 +834,9 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                   }`}>Sites criados</div>
                 </div>
                 <div className={`text-center p-4 rounded-lg transition-colors duration-300 ${
-                  isDarkMode ? 'bg-gray-800' : 'bg-green-50'
+                  isDarkMode ? 'bg-gray-800' : 'bg-orange-50'
                 }`}>
-                  <div className="text-2xl font-bold text-green-600">98%</div>
+                  <div className="text-2xl font-bold text-orange-600">98%</div>
                   <div className={`transition-colors duration-300 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-600'
                   }`}>Clientes satisfeitos</div>
@@ -915,7 +915,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                   {/* 🎨 CORREÇÃO TIPOGRAFIA: Cor cinza escuro ao invés de azul */}
                   Conheça melhor quem cuida do seu site
                 </h2>
-                <div className="w-24 h-1 bg-green-500"></div>
+                <div className="w-24 h-1 bg-orange-500"></div>
               </div>
               
               <div className="space-y-6">
@@ -938,8 +938,8 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                 </div>
                 
                 <div className="flex items-center space-x-4">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                    <Shield className="w-8 h-8 text-green-600" />
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
+                    <Shield className="w-8 h-8 text-orange-600" />
                   </div>
                   <div>
                     <h3 className={`text-2xl font-bold transition-colors duration-300 ${
@@ -978,7 +978,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                 através de sites profissionais que realmente convertem visitantes em clientes.
               </p>
 
-              <Button className="bg-green-500 hover:bg-green-600 text-white" size="lg"
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white" size="lg"
                 onClick={() => window.open('https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20saber%20mais%20sobre%20o%20servi%C3%A7o%20de%20rastreamento.&utm_source=site&utm_medium=botao&utm_campaign=geral', '_blank')}>
                 Saiba mais sobre nós
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -1024,7 +1024,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
       <section className={`py-20 transition-colors duration-300 ${
         isDarkMode 
           ? 'bg-gradient-to-br from-gray-900 to-gray-800' 
-          : 'bg-gradient-to-br from-blue-50 to-green-50'
+          : 'bg-gradient-to-br from-blue-50 to-orange-50'
       }`}>
         {/* 🌙 CORREÇÃO 4: Modo escuro funcionando na seção de parceria */}
         <div className="container mx-auto px-4">
@@ -1044,7 +1044,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                 uma empresa em crescimento no mercado de criação de sites profissionais, 
                 reconhecida pela qualidade e com mais de 200 sites online.
               </p>
-              <Button className="bg-green-500 hover:bg-green-600 text-white" size="lg"
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white" size="lg"
                 onClick={() => window.open('https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20saber%20mais%20sobre%20o%20servi%C3%A7o%20de%20rastreamento.&utm_source=site&utm_medium=botao&utm_campaign=geral', '_blank')}>
                 Quero ser parceiro
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -1054,11 +1054,11 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
               <div className={`w-64 h-64 rounded-full mx-auto flex items-center justify-center transition-colors duration-300 ${
                 isDarkMode 
                   ? 'bg-gradient-to-br from-gray-700 to-gray-600' 
-                  : 'bg-gradient-to-br from-blue-100 to-green-100'
+                  : 'bg-gradient-to-br from-blue-100 to-orange-100'
               }`}>
                 <div className="text-center">
                   <Users className={`w-16 h-16 mx-auto mb-4 transition-colors duration-300 ${
-                    isDarkMode ? 'text-green-400' : 'text-blue-600'
+                    isDarkMode ? 'text-orange-400' : 'text-blue-600'
                   }`} />
                   <h3 className={`text-2xl font-bold transition-colors duration-300 ${
                     isDarkMode ? 'text-gray-100' : 'text-gray-800'
@@ -1086,12 +1086,12 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
               {/* 🎨 CORREÇÃO 5: Azul convertido para cinza escuro + modo escuro */}
               Perguntas frequentes
             </h2>
-            <div className="w-24 h-1 bg-green-500 mx-auto"></div>
+            <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
           </div>
 
           <div className="max-w-4xl mx-auto space-y-6">
             {faqItems.map((item, index) => (
-              <Card key={index} className={`border-2 hover:border-green-500 transition-colors duration-300 ${
+              <Card key={index} className={`border-2 hover:border-orange-500 transition-colors duration-300 ${
                 isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
               }`}>
                 <CardHeader>
@@ -1100,7 +1100,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                   }`}>
                     {/* 🎨 CORREÇÃO: Texto azul convertido para cinza escuro */}
                     {item.question}
-                    <ArrowRight className="w-5 h-5 text-green-500" />
+                    <ArrowRight className="w-5 h-5 text-orange-500" />
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1116,7 +1116,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
           </div>
 
           <div className="text-center mt-12">
-            <Button variant="outline" className="border-green-500 text-green-600 hover:bg-green-500 hover:text-white" size="lg"
+            <Button variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white" size="lg"
               onClick={() => window.open('https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20saber%20mais%20sobre%20o%20servi%C3%A7o%20de%20rastreamento.&utm_source=site&utm_medium=botao&utm_campaign=geral', '_blank')}>
               Ver todas as dúvidas
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -1132,14 +1132,14 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
       <h2 className="text-4xl lg:text-5xl font-bold mb-6">
         Atendimento ConnectWeb
       </h2>
-      <div className="w-24 h-1 bg-green-500 mx-auto"></div>
+      <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
     </div>
 
     <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
       <a href="https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20saber%20mais%20sobre%20o%20servi%C3%A7o%20de%20rastreamento.&utm_source=site&utm_medium=botao&utm_campaign=geral" target="_blank" rel="noopener noreferrer" className="block">
-        <Card className="bg-white/10 backdrop-blur-sm border-green-500 border-2 text-white text-center hover:bg-white/20 transition-all cursor-pointer">
+        <Card className="bg-white/10 backdrop-blur-sm border-orange-500 border-2 text-white text-center hover:bg-white/20 transition-all cursor-pointer">
           <CardContent className="p-6">
-            <MessageCircle className="w-12 h-12 text-green-400 mx-auto mb-4" />
+            <MessageCircle className="w-12 h-12 text-orange-400 mx-auto mb-4" />
             <h3 className="text-lg font-bold mb-2">WhatsApp</h3>
             <p className="text-blue-100">Atendimento rápido e exclusivo</p>
           </CardContent>
@@ -1217,7 +1217,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -1232,7 +1232,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -1247,7 +1247,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
@@ -1278,7 +1278,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                       type="text"
                       name="name"
                       required
-                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
+                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
                         isDarkMode 
                           ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
                           : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
@@ -1297,7 +1297,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                       type="tel"
                       name="phone"
                       required
-                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
+                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
                         isDarkMode 
                           ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
                           : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
@@ -1316,7 +1316,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                       type="email"
                       name="email"
                       required
-                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
+                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
                         isDarkMode 
                           ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
                           : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
@@ -1334,7 +1334,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                     <textarea
                       name="message"
                       rows={4}
-                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 resize-none ${
+                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 resize-none ${
                         isDarkMode 
                           ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
                           : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
@@ -1345,7 +1345,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
 
                   <button
                     type="submit"
-                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center justify-center space-x-2"
+                    className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center justify-center space-x-2"
                   >
                     <MessageCircle className="w-5 h-5" />
                     <span>Solicitar Orçamento</span>
@@ -1358,7 +1358,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
       </section>
 
       {/* Final CTA Section */}
-      <section className="relative py-20 bg-gradient-to-r from-green-600 to-blue-600 text-white overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-r from-blue-800 to-blue-700 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="relative container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
@@ -1435,9 +1435,9 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
               <ul className={`space-y-2 transition-colors duration-300 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
-                <li><button onClick={() => scrollToSection('planos')} className="hover:text-green-600 transition-colors duration-300 text-left">Plano Essencial</button></li>
-                <li><button onClick={() => scrollToSection('planos')} className="hover:text-green-600 transition-colors duration-300 text-left">Plano Popular</button></li>
-                <li><button onClick={() => scrollToSection('portfolio')} className="hover:text-green-600 transition-colors duration-300 text-left">Sites Personalizados</button></li>
+                <li><button onClick={() => scrollToSection('planos')} className="hover:text-orange-600 transition-colors duration-300 text-left">Plano Essencial</button></li>
+                <li><button onClick={() => scrollToSection('planos')} className="hover:text-orange-600 transition-colors duration-300 text-left">Plano Popular</button></li>
+                <li><button onClick={() => scrollToSection('portfolio')} className="hover:text-orange-600 transition-colors duration-300 text-left">Sites Personalizados</button></li>
               </ul>
             </div>
 
@@ -1448,13 +1448,13 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
               <ul className={`space-y-2 transition-colors duration-300 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
-                <li className="hover:text-green-600 transition-colors duration-300">Rua Barão do Rio Branco - Stella Maris - Peruíbe/SP</li>
+                <li className="hover:text-orange-600 transition-colors duration-300">Rua Barão do Rio Branco - Stella Maris - Peruíbe/SP</li>
                 <li>
                   <a 
                     href="https://api.whatsapp.com/send?phone=5511932691882&text=Olá" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="hover:text-green-600 transition-colors duration-300"
+                    className="hover:text-orange-600 transition-colors duration-300"
                   >
                     (13) 99772-6193
                   </a>
@@ -1462,7 +1462,7 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
                 <li>
                   <a 
                     href="mailto:contato@connectweb.com" 
-                    className="hover:text-green-600 transition-colors duration-300"
+                    className="hover:text-orange-600 transition-colors duration-300"
                   >
                     contato@connectweb.com
                   </a>
@@ -1477,19 +1477,19 @@ Seu Negócio <span className="text-green-400 drop-shadow-lg font-black">Com um S
               <ul className={`space-y-2 transition-colors duration-300 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
-                <li><button onClick={() => scrollToSection('sites')} className={`hover:text-green-600 transition-colors duration-300 text-left ${
+                <li><button onClick={() => scrollToSection('sites')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
                   isDarkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}>Sites Profissionais</button></li>
-                <li><button onClick={() => scrollToSection('planos')} className={`hover:text-green-600 transition-colors duration-300 text-left ${
+                <li><button onClick={() => scrollToSection('planos')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
                   isDarkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}>Planos</button></li>
-                <li><button onClick={() => scrollToSection('portfolio')} className={`hover:text-green-600 transition-colors duration-300 text-left ${
+                <li><button onClick={() => scrollToSection('portfolio')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
                   isDarkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}>Portfólio</button></li>
-                <li><button onClick={() => scrollToSection('formulario')} className={`hover:text-green-600 transition-colors duration-300 text-left ${
+                <li><button onClick={() => scrollToSection('formulario')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
                   isDarkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}>Formulário</button></li>
-                <li><button onClick={() => scrollToSection('contato')} className={`hover:text-green-600 transition-colors duration-300 text-left ${
+                <li><button onClick={() => scrollToSection('contato')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
                   isDarkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}>Contato</button></li>
               </ul>
