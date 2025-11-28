@@ -34,6 +34,537 @@ import Portifolio2 from './assets/images/mockups/Portifolio2.jpg'
 import Portifolio3 from './assets/images/mockups/Portifolio3.jpg'
 import Portifolio4 from './assets/images/mockups/Portifolio4.jpg'
 
+// Componente ChatBot ConnectCar - Versão WhatsApp Premium com Imagens e Animações
+const ChatBot = ({ isDarkMode }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [hasAutoOpened, setHasAutoOpened] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const [isShimmering, setIsShimmering] = useState(false);
+  const [hoveredX, setHoveredX] = useState(null);
+  const [headerStatus, setHeaderStatus] = useState('online'); // 'online' ou 'typing'
+  const [showFloatingButton, setShowFloatingButton] = useState(true);
+
+  // Função para obter saudação baseada na hora
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Bom dia';
+    if (hour < 18) return 'Boa tarde';
+    return 'Boa noite';
+  };
+
+  // Animação de brilho ao abrir o site
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsShimmering(true);
+      setTimeout(() => setIsShimmering(false), 2000);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Abre automaticamente após 6 segundos
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!hasAutoOpened) {
+        handleOpenChat();
+      }
+    }, 6000);
+
+    return () => clearTimeout(timer);
+  }, [hasAutoOpened]);
+
+  // Detecta quando o usuário tenta sair do site
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (!hasAutoOpened) {
+        e.preventDefault();
+        e.returnValue = '';
+        handleOpenChat();
+      }
+    };
+
+    const handleMouseLeave = (e) => {
+      if (e.clientY < 50 && !hasAutoOpened && !isOpen) {
+        handleOpenChat();
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [hasAutoOpened, isOpen]);
+
+  // Animação de brilho a cada 10 segundos
+  useEffect(() => {
+    if (isOpen || !showFloatingButton) return;
+
+    const shimmerInterval = setInterval(() => {
+      setIsShimmering(true);
+      setTimeout(() => setIsShimmering(false), 2000);
+    }, 10000);
+
+    return () => clearInterval(shimmerInterval);
+  }, [isOpen, showFloatingButton]);
+
+  // Fechar chat ao clicar fora
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const chatContainer = document.querySelector('.chat-container');
+      const floatingButton = document.querySelector('.floating-button');
+      
+      if (isOpen && 
+          chatContainer && 
+          !chatContainer.contains(event.target) && 
+          (!floatingButton || !floatingButton.contains(event.target))) {
+        handleCloseChat();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const handleOpenChat = () => {
+    setIsClosing(false);
+    setIsAnimating(true);
+    setIsOpen(true);
+    setHasAutoOpened(true);
+    setShowFloatingButton(false);
+    
+    setTimeout(() => {
+      setIsAnimating(false);
+      if (!hasStarted) {
+        startConversation();
+        setHasStarted(true);
+      }
+    }, 300);
+  };
+
+  const handleCloseChat = () => {
+    setIsClosing(true);
+    setIsAnimating(true);
+    
+    setTimeout(() => {
+      setIsOpen(false);
+      setIsAnimating(false);
+      setIsClosing(false);
+      setShowFloatingButton(true);
+    }, 200);
+  };
+
+  const toggleChat = () => {
+    if (isOpen) {
+      handleCloseChat();
+    } else {
+      handleOpenChat();
+    }
+  };
+
+  const startConversation = async () => {
+    setIsTyping(true);
+    setHeaderStatus('typing');
+    
+    // Primeira mensagem com animação de digitação
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setIsTyping(false);
+    
+    setMessages([{
+      id: 1,
+      text: `${getGreeting()}! Acompanhe seu veículo ou frota em tempo real através do seu celular.`,
+      sender: 'bot',
+      timestamp: new Date()
+    }]);
+
+    // Segunda mensagem com animação de digitação
+    setIsTyping(true);
+    await new Promise(resolve => setTimeout(resolve, 1800));
+    setIsTyping(false);
+
+    setMessages(prev => [...prev, {
+      id: 2,
+      text: 'Receba um orçamento sem compromisso, contrate sem carência.',
+      sender: 'bot',
+      timestamp: new Date()
+    }]);
+
+    // Volta para o status online após as mensagens
+    setTimeout(() => {
+      setHeaderStatus('online');
+    }, 500);
+
+    // Mostra opções após as mensagens
+    setTimeout(() => {
+      setShowOptions(true);
+    }, 500);
+  };
+
+  const handleOptionClick = (option) => {
+    let message = '';
+    
+    switch (option) {
+      case 'orcamento':
+        message = 'Olá! Gostaria de receber um orçamento para rastreamento do meu veículo.';
+        break;
+      case 'preco':
+        message = 'Olá! Gostaria de saber mais sobre os preços do rastreamento.';
+        break;
+      case 'funcionamento':
+        message = 'Olá! Como funciona o sistema de rastreamento?';
+        break;
+      default:
+        message = 'Olá! Gostaria de informações sobre rastreamento veicular.';
+    }
+
+    // Adiciona mensagem do usuário
+    setMessages(prev => [...prev, {
+      id: prev.length + 1,
+      text: option === 'orcamento' ? 'Quero receber um orçamento' : 
+            option === 'preco' ? 'Quanto custa o rastreamento?' :
+            'Como funciona o sistema?',
+      sender: 'user',
+      timestamp: new Date()
+    }]);
+
+    // Redireciona para WhatsApp
+    setTimeout(() => {
+      window.open(`https://api.whatsapp.com/send?phone=5511932691882&text=${encodeURIComponent(message)}`, '_blank');
+    }, 800);
+  };
+
+  // Funções para gerenciar o hover dos botões X
+  const handleXMouseEnter = (xType) => {
+    setHoveredX(xType);
+  };
+
+  const handleXMouseLeave = () => {
+    setHoveredX(null);
+  };
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 chat-container">
+      {/* Janela do Chat - Estilo WhatsApp Premium */}
+      {isOpen && (
+        <div className={`
+          w-80 h-96 flex flex-col shadow-2xl border
+          transform transition-all duration-300 ease-out
+          rounded-lg
+          ${isAnimating ? 'scale-95 opacity-90' : 'scale-100 opacity-100'}
+          ${isDarkMode 
+            ? 'bg-[#1f2c34] border-[#2a3942] text-white' 
+            : 'bg-white border-gray-300 text-gray-800'
+          }
+        `}>
+          {/* Cabeçalho - Estilo WhatsApp com Imagens Personalizadas */}
+          <div className={`
+            p-3 border-b flex items-center justify-between rounded-t-lg
+            ${isDarkMode 
+              ? 'bg-[#202c33] border-[#2a3942] text-white' 
+              : 'bg-[#008069] text-white'
+            }
+          `}>
+            <div className="flex items-center space-x-3">
+              {/* Avatar com imagem personalizada */}
+              <div className="relative">
+                <img 
+                  src="https://i.ibb.co/R43gV7Hg/ABA-NAVEGADOR-IMAGEM-FAVICON-5.jpg" 
+                  alt="ConnectCar"
+                  className="w-10 h-10 rounded-full object-cover border-2 border-white"
+                />
+                {/* Indicador online */}
+                <div className={`
+                  absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2
+                  ${isDarkMode ? 'bg-green-500 border-[#202c33]' : 'bg-green-400 border-[#008069]'}
+                `}></div>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center space-x-2">
+                  <h3 className="font-semibold text-sm">ConnectCar</h3>
+                  {/* Selo de Verificação Personalizado */}
+                  <img 
+                    src="https://i.ibb.co/QFzkzn2p/ABA-NAVEGADOR-IMAGEM-FAVICON-3.jpg" 
+                    alt="Verificado"
+                    className="w-4 h-4 object-contain rounded-sm"
+                  />
+                </div>
+                <div className="text-xs opacity-90 transition-all duration-300">
+                  {headerStatus === 'typing' ? (
+                    <div className="flex items-baseline space-x-1">
+                      <span>Digitando</span>
+                      <div className="flex space-x-1 items-end">
+                        <div className={`
+                          w-1 h-1 rounded-full animate-whatsapp-typing
+                          ${isDarkMode ? 'bg-white' : 'bg-white'}
+                        `} style={{animationDelay: '0.1s'}}></div>
+                        <div className={`
+                          w-1 h-1 rounded-full animate-whatsapp-typing
+                          ${isDarkMode ? 'bg-white' : 'bg-white'}
+                        `} style={{animationDelay: '0.2s'}}></div>
+                        <div className={`
+                          w-1 h-1 rounded-full animate-whatsapp-typing
+                          ${isDarkMode ? 'bg-white' : 'bg-white'}
+                        `} style={{animationDelay: '0.3s'}}></div>
+                      </div>
+                    </div>
+                  ) : (
+                    <span className="animate-fade-in">Online • responde em segundos</span>
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="flex space-x-2">
+              <button 
+                onClick={handleCloseChat}
+                onMouseEnter={() => handleXMouseEnter('header')}
+                onMouseLeave={handleXMouseLeave}
+                className={`
+                  opacity-70 hover:opacity-100 transition-all duration-300 
+                  p-1 rounded-full hover:bg-black hover:bg-opacity-30 text-white
+                  ${hoveredX === 'header' ? 'animate-single-spin' : ''}
+                `}
+              >
+                <X className="w-4 h-4 transition-transform duration-300" />
+              </button>
+            </div>
+          </div>
+
+          {/* Área de Mensagens */}
+          <div className={`
+            flex-1 p-4 overflow-y-auto
+            ${isDarkMode ? 'bg-[#0b141a]' : 'bg-[#e5ddd5]'}
+          `} style={{
+            backgroundImage: isDarkMode 
+              ? 'url("data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23202c33%22 fill-opacity=%220.1%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
+              : 'url("data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23000000%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
+          }}>
+            <div className="space-y-2">
+              {/* Mensagens do bot */}
+              {messages.map((msg) => (
+                <div key={msg.id} className={`flex ${msg.sender === 'bot' ? 'justify-start' : 'justify-end'}`}>
+                  <div className={`
+                    max-w-xs px-3 py-2 rounded-lg shadow-sm transition-all duration-200
+                    ${msg.sender === 'bot' 
+                      ? (isDarkMode 
+                          ? 'bg-[#202c33] text-white rounded-bl-none' 
+                          : 'bg-white text-gray-800 border border-gray-200 rounded-bl-none'
+                        ) 
+                      : (isDarkMode 
+                          ? 'bg-[#005c4b] text-white rounded-br-none' 
+                          : 'bg-[#d9fdd3] text-gray-800 rounded-br-none'
+                        )
+                    }
+                    ${isAnimating ? 'transform scale-95' : 'transform scale-100'}
+                  `}>
+                    <p className="text-sm leading-relaxed">{msg.text}</p>
+                    <p className={`
+                      text-xs opacity-70 text-right mt-1
+                      ${msg.sender === 'bot' && isDarkMode ? 'text-gray-400' : ''}
+                    `}>
+                      {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </p>
+                  </div>
+                </div>
+              ))}
+
+              {/* Animação de digitação */}
+              {isTyping && (
+                <div className="flex justify-start">
+                  <div className={`
+                    px-4 py-3 rounded-lg shadow-sm
+                    ${isDarkMode 
+                      ? 'bg-[#202c33] text-white rounded-bl-none' 
+                      : 'bg-white text-gray-800 border border-gray-200 rounded-bl-none'
+                    }
+                  `}>
+                    <div className="flex space-x-1 items-center">
+                      <div className={`
+                        w-2 h-2 rounded-full animate-bounce
+                        ${isDarkMode ? 'bg-gray-400' : 'bg-gray-500'}
+                      `}></div>
+                      <div className={`
+                        w-2 h-2 rounded-full animate-bounce
+                        ${isDarkMode ? 'bg-gray-400' : 'bg-gray-500'}
+                      `} style={{animationDelay: '0.1s'}}></div>
+                      <div className={`
+                        w-2 h-2 rounded-full animate-bounce
+                        ${isDarkMode ? 'bg-gray-400' : 'bg-gray-500'}
+                      `} style={{animationDelay: '0.2s'}}></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Opções de Resposta */}
+          {showOptions && (
+            <div className={`
+              p-3 border-t transition-all duration-300 rounded-b-lg
+              ${isAnimating ? 'opacity-70' : 'opacity-100'}
+              ${isDarkMode 
+                ? 'bg-[#202c33] border-[#2a3942]' 
+                : 'bg-white border-gray-200'
+              }
+            `}>
+              <div className="space-y-2">
+                <button
+                  onClick={() => handleOptionClick('orcamento')}
+                  className={`
+                    w-full text-center p-3 text-sm font-medium transition-all duration-200 
+                    border-2 hover:scale-105 hover:shadow-md active:scale-95 rounded-lg
+                    ${isDarkMode 
+                      ? 'border-blue-600 bg-blue-700 hover:bg-blue-600 text-white' 
+                      : 'border-blue-500 bg-blue-500 hover:bg-blue-400 text-white'
+                    }
+                  `}
+                >
+                  Receber orçamento sem compromisso
+                </button>
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    { key: 'preco', text: 'Valores' },
+                    { key: 'funcionamento', text: 'Como funciona' }
+                  ].map((item) => (
+                    <button
+                      key={item.key}
+                      onClick={() => handleOptionClick(item.key)}
+                      className={`
+                        text-center p-3 text-xs transition-all duration-200 
+                        border hover:scale-105 active:scale-95 rounded-lg
+                        ${isDarkMode 
+                          ? 'border-[#2a3942] hover:bg-[#2a3942] text-white' 
+                          : 'border-gray-200 hover:bg-gray-50 text-gray-800'
+                        }
+                      `}
+                    >
+                      {item.text}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Botão do Chat - Ícone WhatsApp Idêntico */}
+      {showFloatingButton && (
+        <button
+          onClick={toggleChat}
+          className={`
+            floating-button flex items-center justify-center w-20 h-20 rounded-full 
+            shadow-2xl transition-all duration-300 ease-out
+            hover:scale-110 active:scale-95 relative overflow-hidden
+            ${isAnimating ? 'scale-105' : 'scale-100'}
+            ${isOpen 
+              ? (isDarkMode 
+                  ? 'bg-gray-600 hover:bg-gray-500' 
+                  : 'bg-gray-500 hover:bg-gray-400'
+                )
+              : (isDarkMode 
+                  ? 'bg-[#00a884] hover:bg-[#00bf8e] shadow-lg' 
+                  : 'bg-[#00a884] hover:bg-[#00bf8e] shadow-lg'
+                )
+            }
+            text-white animate-fade-in
+          `}
+        >
+          <svg 
+            width="36" 
+            height="36" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+            className="transition-transform duration-300 relative z-10"
+          >
+            <path 
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" 
+              fill="currentColor"
+            />
+          </svg>
+          
+          {/* Efeito de brilho passando da esquerda para a direita */}
+          {isShimmering && (
+            <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent transform -skew-x-12 z-0"></div>
+          )}
+        </button>
+      )}
+
+      {/* Estilos para as animações */}
+      <style jsx>{`
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%) skewX(-12deg);
+          }
+          100% {
+            transform: translateX(200%) skewX(-12deg);
+          }
+        }
+        
+        @keyframes single-spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes whatsapp-typing {
+          0%, 60%, 100% {
+            transform: translateY(0);
+            opacity: 0.4;
+          }
+          30% {
+            transform: translateY(-3px);
+            opacity: 1;
+          }
+        }
+
+        @keyframes fade-in {
+          0% {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        .animate-shimmer {
+          animation: shimmer 2s ease-out;
+        }
+        
+        .animate-single-spin {
+          animation: single-spin 0.4s ease-out;
+        }
+
+        .animate-whatsapp-typing {
+          animation: whatsapp-typing 1.4s ease-in-out infinite;
+        }
+
+        .animate-fade-in {
+          animation: fade-in 0.3s ease-out forwards;
+        }
+      `}</style>
+    </div>
+  );
+};
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -322,7 +853,7 @@ const carouselImages2 = [
                 { id: 'planos', label: 'Planos' },
                 { id: 'portfolio', label: 'Portfólio' },
                 { id: 'contato', label: 'Contato' },
-                { id: 'formulario', label: 'Formulário' }
+                { id: 'formulário', label: 'Formulário' }
               ].map((item) => (
                 <button
                   key={item.id}
@@ -396,7 +927,7 @@ const carouselImages2 = [
                   { id: 'planos', label: 'Planos' },
                   { id: 'portfolio', label: 'Portfólio' },
                   { id: 'contato', label: 'Contato' },
-                  { id: 'formulario', label: 'Formulário' }
+                  { id: 'formulário', label: 'Formulário' }
                 ].map((item) => (
                   <button
                     key={item.id}
@@ -444,7 +975,7 @@ const carouselImages2 = [
           loading="eager"
         />
         {/* Overlay sutil para legibilidade do texto */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
         
         <div className="relative container mx-auto px-5 sm:px-6 lg:px-8 py-20 lg:py-32">
           {/* ✅ CORREÇÃO 1.2: Padding lateral consistente na hero section */}
@@ -453,7 +984,7 @@ const carouselImages2 = [
               {/* 🚫 CORREÇÃO 1: Botão "Seu Novo Site Começa Aqui!" removido conforme solicitado */}
               
 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white">
-  Seu Negócio <span className="text-orange-400 drop-shadow-lg font-black">Com um Site Moderno</span> e Personal
+  Localize seus veículos em tempo real<span className="text-white-400 drop-shadow-lg font-black"></span> por app e computador
 </h1>
               
               <p className="text-base sm:text-lg lg:text-xl text-blue-100 font-medium leading-relaxed">
@@ -1190,7 +1721,7 @@ const carouselImages2 = [
 </section>
 
       {/* Contact Form Section */}
-      <section id="formulario" className={`py-20 transition-colors duration-300 ${
+      <section id="formulário" className={`py-20 transition-colors duration-300 ${
         isDarkMode ? 'bg-gray-800' : 'bg-gray-50'
       }`}>
         <div className="container mx-auto px-5 sm:px-6 lg:px-8">
@@ -1267,7 +1798,7 @@ const carouselImages2 = [
               <div className={`p-8 rounded-2xl shadow-xl transition-colors duration-300 ${
                 isDarkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
               }`}>
-                <form id="formulario-contato" className="space-y-6">
+                <form id="formulário-contato" className="space-y-6">
                   <div>
                     <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
                       isDarkMode ? 'text-gray-200' : 'text-gray-700'
@@ -1486,7 +2017,7 @@ const carouselImages2 = [
                 <li><button onClick={() => scrollToSection('portfolio')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
                   isDarkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}>Portfólio</button></li>
-                <li><button onClick={() => scrollToSection('formulario')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
+                <li><button onClick={() => scrollToSection('formulário')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
                   isDarkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}>Formulário</button></li>
                 <li><button onClick={() => scrollToSection('contato')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
@@ -1505,6 +2036,7 @@ const carouselImages2 = [
           </div>
         </div>
       </footer>
+      <ChatBot isDarkMode={isDarkMode} />
     </div>
   )
 }
