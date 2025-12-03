@@ -824,6 +824,10 @@ const carouselImages2 = [
     {
       question: "Como funciona o programa de parceria de ConhectWeb?",
       answer: "Indique e ganhe! Receba R$100,00 a cada indicação que se consolidar em cliente, receba por PIX ou desconte em seu plano."
+    },
+    {
+      question: "Como funciona o programa de parceria de ConhectWeb?",
+      answer: "Indique e ganhe! Receba R$100,00 a cada indicação que se consolidar em cliente, receba por PIX ou desconte em seu plano."
     }
   ]
 
@@ -839,12 +843,17 @@ const carouselImages2 = [
           {/* ✅ CORREÇÃO 1.1: Padding lateral mobile mínimo 20px (px-5 = 20px) */}
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <img
-  src="https://i.ibb.co/C5gyPxjz/CABE-ALHO-RODA-P-LOGO-9.png"
-  alt="Logo ConnectWeb"
-  className={`transition-all duration-300 ${isScrolled ? 'w-47 h-auto' : 'w-50 h-auto'}`}
-/>
-            </div>
+  <button
+    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+    className="focus:outline-none"
+  >
+    <img
+      src="https://i.ibb.co/C5gyPxjz/CABE-ALHO-RODA-P-LOGO-9.png"
+      alt="Logo ConnectWeb"
+      className={`transition-all duration-300 ${isScrolled ? 'w-47 h-auto' : 'w-50 h-auto'}`}
+    />
+  </button>
+</div>
             
             {/* Desktop Menu */}
             <nav className="hidden md:flex space-x-8">
@@ -983,9 +992,18 @@ const carouselImages2 = [
             <div className="space-y-8">
               {/* 🚫 CORREÇÃO 1: Botão "Seu Novo Site Começa Aqui!" removido conforme solicitado */}
               
-<h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white">
-  Localize seus veículos em tempo real<span className="text-white-400 drop-shadow-lg font-black"></span> por app e computador
-</h1>
+<div className="space-y-0.5 sm:space-y-2.5 w-[110%] relative z-10">
+  <div className="overflow-visible">
+    <div 
+      className="text-white text-5xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-none md:leading-tight tracking-tight opacity-0 transform transition-all duration-700 ease-out"
+      style={{
+        animation: 'slideUp 3.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards'
+      }}
+    >
+      Localize seus veículos em tempo real por app e computador
+    </div>
+  </div>
+</div>
               
               <p className="text-base sm:text-lg lg:text-xl text-blue-100 font-medium leading-relaxed">
                 {/* ✅ CORREÇÃO 2.2: Texto corpo base 16px (text-base) com responsividade */}
@@ -1008,7 +1026,7 @@ const carouselImages2 = [
             </div>
 
             <div className="space-y-6">
-              <Card className="bg-white/15 backdrop-blur-md border-white/30 text-white shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+              <Card className="bg-white/15 backdrop-blur-md border-orange/30 text-white shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
                 style={{ boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.1), 0 25px 50px -12px rgba(0,0,0,0.25)' }}>
                 {/* 🖼️ CORREÇÃO: Sombreamento interno suave adicionado */}
                 <CardContent className="p-6">
@@ -1022,7 +1040,7 @@ const carouselImages2 = [
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/15 backdrop-blur-md border-white/30 text-white shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
+              <Card className="bg-white/15 backdrop-blur-md border-orange/30 text-white shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
                 style={{ boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.1), 0 25px 50px -12px rgba(0,0,0,0.25)' }}>
                 {/* 🖼️ CORREÇÃO: Sombreamento interno suave adicionado */}
                 <CardContent className="p-6">
@@ -1605,56 +1623,130 @@ const carouselImages2 = [
       </section>
 
       {/* FAQ Section */}
-      <section className={`py-20 transition-colors duration-300 ${
-        isDarkMode ? 'bg-gray-900' : 'bg-white'
+<section className={`py-20 transition-colors duration-300 ${
+  isDarkMode ? 'bg-gray-900' : 'bg-white'
+}`}>
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className={`text-4xl lg:text-5xl font-bold mb-6 transition-colors duration-300 ${
+        isDarkMode ? 'text-gray-100' : 'text-gray-800'
       }`}>
-        {/* 🌙 CORREÇÃO 4: Modo escuro funcionando na seção FAQ */}
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className={`text-4xl lg:text-5xl font-bold mb-6 transition-colors duration-300 ${
-              isDarkMode ? 'text-gray-100' : 'text-gray-800'
-            }`}>
-              {/* 🎨 CORREÇÃO 5: Azul convertido para cinza escuro + modo escuro */}
-              Perguntas frequentes
-            </h2>
-            <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
-          </div>
+        Perguntas frequentes
+      </h2>
+      <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
+    </div>
 
-          <div className="max-w-4xl mx-auto space-y-6">
-            {faqItems.map((item, index) => (
-              <Card key={index} className={`border-2 hover:border-orange-500 transition-colors duration-300 ${
-                isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
+    <div className="max-w-4xl mx-auto space-y-6 perspective-1000">
+      {faqItems.map((item, index) => (
+        <div
+          key={index}
+          className="faq-3d-container transform-style-3d"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateZ(15px) scale(1.02)';
+            e.currentTarget.style.boxShadow = '0 15px 30px rgba(0,0,0,0.15)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateZ(0px) scale(1)';
+            e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.08)';
+          }}
+        >
+          <Card className={`border-2 transition-all duration-500 ease-out ${
+            isDarkMode 
+              ? 'bg-gray-800 border-gray-700 hover:border-orange-500/60' 
+              : 'bg-white border-gray-200 hover:border-orange-500/60'
+          }`}>
+            <CardHeader className="pb-4">
+              <CardTitle className={`flex items-center justify-between transition-colors duration-300 ${
+                isDarkMode ? 'text-gray-100' : 'text-gray-800'
               }`}>
-                <CardHeader>
-                  <CardTitle className={`flex items-center justify-between transition-colors duration-300 ${
-                    isDarkMode ? 'text-gray-100' : 'text-gray-800'
-                  }`}>
-                    {/* 🎨 CORREÇÃO: Texto azul convertido para cinza escuro */}
-                    {item.question}
-                    <ArrowRight className="w-5 h-5 text-orange-500" />
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className={`transition-colors duration-300 ${
-                    isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                  }`}>
-                    {/* 🎨 CORREÇÃO: Texto azul convertido para cinza escuro */}
-                    {item.answer}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white" size="lg"
-              onClick={() => window.open('https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20saber%20mais%20sobre%20o%20servi%C3%A7o%20de%20rastreamento.&utm_source=site&utm_medium=botao&utm_campaign=geral', '_blank')}>
-              Ver todas as dúvidas
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
+                <span className="flex items-center text-lg font-semibold">
+                  <span className={`w-2 h-2 rounded-full mr-3 transition-colors duration-300 ${
+                    isDarkMode ? 'bg-orange-500' : 'bg-orange-500'
+                  }`}></span>
+                  {item.question}
+                </span>
+                <div className="flex items-center space-x-2">
+                  <div className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${
+                    isDarkMode ? 'bg-orange-400' : 'bg-orange-500'
+                  }`}></div>
+                  <ArrowRight className={`w-5 h-5 transition-transform duration-300 ${
+                    isDarkMode ? 'text-orange-400' : 'text-orange-500'
+                  }`} />
+                </div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className={`pl-5 border-l-2 transition-all duration-500 ${
+                isDarkMode ? 'border-orange-500/40' : 'border-orange-500/40'
+              }`}>
+                <p className={`transition-colors duration-300 text-base leading-relaxed ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                }`}>
+                  {item.answer}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
-      </section>
+      ))}
+    </div>
+
+    <div className="text-center mt-12">
+      <Button 
+        variant="outline" 
+        className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white transition-all duration-300 transform hover:scale-105 group"
+        size="lg"
+        onClick={() => window.open('https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20saber%20mais%20sobre%20o%20servi%C3%A7o%20de%20rastreamento.&utm_source=site&utm_medium=botao&utm_campaign=geral', '_blank')}
+      >
+        Ver todas as dúvidas
+        <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+      </Button>
+    </div>
+  </div>
+
+  <style jsx>{`
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    
+    .faq-3d-container {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-style: preserve-3d;
+      transform: translateZ(0px) scale(1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      border-radius: 12px;
+    }
+    
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    
+    .faq-3d-container:hover {
+      z-index: 10;
+    }
+    
+    .faq-3d-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, 
+        rgba(249, 115, 22, 0.05) 0%, 
+        transparent 50%, 
+        rgba(249, 115, 22, 0.02) 100%);
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .faq-3d-container:hover::before {
+      opacity: 1;
+    }
+  `}</style>
+</section>
 
       {/* {/* Contact Section */}
 <section id="contato" className="py-20 bg-gradient-to-br from-blue-900 to-blue-800 text-white">
@@ -1837,22 +1929,22 @@ const carouselImages2 = [
                     />
                   </div>
 
-                  <div>
+<div>
                     <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
                       isDarkMode ? 'text-gray-200' : 'text-gray-700'
                     }`}>
-                      E-mail *
+                      Telefone *
                     </label>
                     <input
-                      type="email"
-                      name="email"
+                      type="tel"
+                      name="phone"
                       required
                       className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
                         isDarkMode 
                           ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
                           : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
                       }`}
-                      placeholder="seu@email.com"
+                      placeholder="(11) 99999-9999"
                     />
                   </div>
 
@@ -1914,6 +2006,7 @@ const carouselImages2 = [
           </div>
         </div>
       </section>
+      
 {/* Footer */}
       <footer className={`py-12 border-t transition-colors duration-300 ${
         isDarkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'
@@ -1922,17 +2015,22 @@ const carouselImages2 = [
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-6">
-                <div className="flex items-center justify-center">
-                  <img 
-                    src="https://i.ibb.co/s9KTktyS/CABE-ALHO-RODA-P-LOGO-DEFINITIVO.png" 
-                    alt="ConnectWeb" 
-                    className="h-10 w-auto"
-                  />
-                </div>
-                <span className={`text-2xl font-bold transition-colors duration-300 ${
-                  isDarkMode ? 'text-gray-100' : 'text-gray-800'
-                }`}></span>
-              </div>
+  <button
+    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+    className="focus:outline-none"
+  >
+    <div className="flex items-center justify-center">
+      <img 
+        src="https://i.ibb.co/PsQ1TpFd/RODA-P-LOGO-8.png" 
+        alt="ConnectWeb" 
+        className="h-10 w-auto"
+      />
+    </div>
+  </button>
+  <span className={`text-2xl font-bold transition-colors duration-300 ${
+    isDarkMode ? 'text-gray-100' : 'text-gray-800'
+  }`}></span>
+</div>
               <p className={`mb-4 transition-colors duration-300 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
@@ -1987,7 +2085,7 @@ const carouselImages2 = [
                     rel="noopener noreferrer"
                     className="hover:text-orange-600 transition-colors duration-300"
                   >
-                    (13) 99772-6193
+                    (11) 93269-1882
                   </a>
                 </li>
                 <li>
@@ -2032,7 +2130,7 @@ const carouselImages2 = [
               ? 'border-gray-700 text-gray-300' 
               : 'border-gray-200 text-gray-600'
           }`}>
-            <p>&copy; 2026 ConnectWeb. Todos os direitos reservados.</p>
+            <p>&copy; 2026 ConnectCar. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
