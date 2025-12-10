@@ -1812,174 +1812,369 @@ const carouselImages2 = [
   </div>
 </section>
 
-      {/* Contact Form Section */}
-      <section id="formulário" className={`py-20 transition-colors duration-300 ${
-        isDarkMode ? 'bg-gray-800' : 'bg-gray-50'
-      }`}>
-        <div className="container mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className={`text-4xl lg:text-5xl font-bold mb-6 transition-colors duration-300 ${
-                isDarkMode ? 'text-gray-100' : 'text-gray-800'
-              }`}>
-                Solicite seu Orçamento
-              </h2>
-              <p className={`text-xl transition-colors duration-300 ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-600'
-              }`}>
-                Preencha o formulário e receba uma proposta personalizada para seu projeto
+{/* Case Studies/Results Section */}
+<section className="py-20 bg-white dark:bg-gray-900">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        Resultados Comprovados
+      </h2>
+      <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Empresas que confiaram em nossa solução e transformaram seus resultados
+      </p>
+    </div>
+    
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div className="space-y-8">
+          <div className="flex items-start bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
+            <div className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg p-3 mr-4">
+              <svg className="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Empresa de Logística</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Redução de 45% nos custos operacionais e aumento de 60% na eficiência das entregas após 3 meses de implementação.
               </p>
             </div>
+          </div>
+          
+          <div className="flex items-start bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
+            <div className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg p-3 mr-4">
+              <svg className="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Comércio Eletrônico</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Aumento de 85% na satisfação do cliente e redução de 30% em chamados de suporte relacionados a entregas.
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex items-start bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
+            <div className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg p-3 mr-4">
+              <svg className="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Indústria Automotiva</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Monitoramento em tempo real de mais de 500 veículos com precisão de localização de 99,8%.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-xl">
+        <div className="text-center">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-200 dark:bg-gray-700 rounded-full mb-6">
+            <svg className="w-10 h-10 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Números que impressionam</h3>
+          <div className="grid grid-cols-2 gap-6 mb-8">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-gray-800 dark:text-gray-200 mb-2">+98%</div>
+              <p className="text-gray-600 dark:text-gray-300">Satisfação dos clientes</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-gray-800 dark:text-gray-200 mb-2">24/7</div>
+              <p className="text-gray-600 dark:text-gray-300">Monitoramento ativo</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-gray-800 dark:text-gray-200 mb-2">+500</div>
+              <p className="text-gray-600 dark:text-gray-300">Clientes atendidos</p>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-gray-800 dark:text-gray-200 mb-2">99.9%</div>
+              <p className="text-gray-600 dark:text-gray-300">Disponibilidade</p>
+            </div>
+          </div>
+          <Button 
+            onClick={() => window.open('https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20ver%20mais%20cases%20de%20sucesso.&utm_source=site&utm_medium=botao&utm_campaign=cases', '_blank')}
+            className="bg-orange-500 hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700 text-white px-8 py-3"
+          >
+            Ver mais casos de sucesso
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className={`text-2xl font-bold mb-6 transition-colors duration-300 ${
-                  isDarkMode ? 'text-gray-100' : 'text-gray-800'
-                }`}>
-                  Por que escolher a ConnectWeb?
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className={`font-semibold transition-colors duration-300 ${
-                        isDarkMode ? 'text-gray-100' : 'text-gray-800'
-                      }`}>Sites Responsivos</h4>
-                      <p className={`transition-colors duration-300 ${
-                        isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                      }`}>Funcionam perfeitamente em todos os dispositivos</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className={`font-semibold transition-colors duration-300 ${
-                        isDarkMode ? 'text-gray-100' : 'text-gray-800'
-                      }`}>Tema Claro e Escuro</h4>
-                      <p className={`transition-colors duration-300 ${
-                        isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                      }`}>Cor de fundo adaptável com um clique (botão no cabeçalho).</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h4 className={`font-semibold transition-colors duration-300 ${
-                        isDarkMode ? 'text-gray-100' : 'text-gray-800'
-                      }`}>Entrega Rápida</h4>
-                      <p className={`transition-colors duration-300 ${
-                        isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                      }`}>Seu site pronto em até 10 dias úteis</p>
-                    </div>
-                  </div>
-                </div>
+{/* Features/Differentiators Section */}
+<section className="py-20 bg-gray-50 dark:bg-gray-900">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        Por que escolher nossa solução?
+      </h2>
+      <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        Tecnologia avançada combinada com suporte especializado para garantir os melhores resultados
+      </p>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
+        <div className="w-14 h-14 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mb-6">
+          <svg className="w-7 h-7 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Segurança Máxima</h3>
+        <p className="text-gray-600 dark:text-gray-300">
+          Sistema de criptografia de ponta a ponta garantindo a proteção total dos seus dados e informações.
+        </p>
+      </div>
+      
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
+        <div className="w-14 h-14 bg-orange-100 rounded-lg flex items-center justify-center mb-6">
+          <svg className="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Alta Performance</h3>
+        <p className="text-gray-600 dark:text-gray-300">
+          Processamento em tempo real com 99,9% de disponibilidade garantida para sua operação.
+        </p>
+      </div>
+      
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
+        <div className="w-14 h-14 bg-yellow-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mb-6">
+          <svg className="w-7 h-7 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Suporte Dedicado</h3>
+        <p className="text-gray-600 dark:text-gray-300">
+          Equipe especializada disponível 24/7 para oferecer suporte técnico e consultoria personalizada.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Contact Form Section */}
+<section id="formulário" className={`py-20 transition-colors duration-300 ${
+  isDarkMode ? 'bg-gray-800' : 'bg-white'
+}`}>
+  <div className="container mx-auto px-5 sm:px-6 lg:px-8">
+    <div className="max-w-4xl mx-auto">
+      <div className="text-center mb-12">
+        <h2 className={`text-4xl lg:text-5xl font-bold mb-6 transition-colors duration-300 ${
+          isDarkMode ? 'text-gray-100' : 'text-gray-800'
+        }`}>
+          Solicite seu Orçamento
+        </h2>
+        <p className={`text-xl transition-colors duration-300 ${
+          isDarkMode ? 'text-gray-300' : 'text-gray-600'
+        }`}>
+          Preencha o formulário e receba uma proposta personalizada para seu projeto
+        </p>
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 className={`text-2xl font-bold mb-6 transition-colors duration-300 ${
+            isDarkMode ? 'text-gray-100' : 'text-gray-800'
+          }`}>
+            Por que escolher a ConnectWeb?
+          </h3>
+          <div className="space-y-4">
+            <div className="flex items-start space-x-3">
+              <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
               </div>
-
-              <div className={`p-8 rounded-2xl shadow-xl transition-colors duration-300 ${
-                isDarkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
-              }`}>
-                <form id="formulário-contato" className="space-y-6">
-                  <div>
-                    <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                      isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                    }`}>
-                      Nome Completo *
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
-                        isDarkMode 
-                          ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                      }`}
-                      placeholder="Digite seu nome completo"
-                    />
-                  </div>
-
-                  <div>
-                    <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                      isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                    }`}>
-                      Telefone *
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      required
-                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
-                        isDarkMode 
-                          ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                      }`}
-                      placeholder="(11) 99999-9999"
-                    />
-                  </div>
-
-<div>
-                    <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                      isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                    }`}>
-                      Telefone *
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      required
-                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
-                        isDarkMode 
-                          ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                      }`}
-                      placeholder="(11) 99999-9999"
-                    />
-                  </div>
-
-                  <div>
-                    <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                      isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                    }`}>
-                      Mensagem
-                    </label>
-                    <textarea
-                      name="message"
-                      rows={4}
-                      className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 resize-none ${
-                        isDarkMode 
-                          ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
-                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                      }`}
-                      placeholder="Conte-nos sobre seu projeto..."
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center justify-center space-x-2"
-                  >
-                    <MessageCircle className="w-5 h-5" />
-                    <span>Solicitar Orçamento</span>
-                  </button>
-                </form>
+              <div>
+                <h4 className={`font-semibold transition-colors duration-300 ${
+                  isDarkMode ? 'text-gray-100' : 'text-gray-800'
+                }`}>Sites Responsivos</h4>
+                <p className={`transition-colors duration-300 ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                }`}>Funcionam perfeitamente em todos os dispositivos</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-3">
+              <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 className={`font-semibold transition-colors duration-300 ${
+                  isDarkMode ? 'text-gray-100' : 'text-gray-800'
+                }`}>Tema Claro e Escuro</h4>
+                <p className={`transition-colors duration-300 ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                }`}>Cor de fundo adaptável com um clique (botão no cabeçalho).</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-3">
+              <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 className={`font-semibold transition-colors duration-300 ${
+                  isDarkMode ? 'text-gray-100' : 'text-gray-800'
+                }`}>Entrega Rápida</h4>
+                <p className={`transition-colors duration-300 ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                }`}>Seu site pronto em até 10 dias úteis</p>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
+        <div className={`p-8 rounded-2xl shadow-xl transition-colors duration-300 ${
+          isDarkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'
+        }`}>
+          {/* ADICIONE onSubmit AQUI */}
+          <form 
+            id="formulário-contato" 
+            className="space-y-6"
+            onSubmit={handleFormSubmit} // ADICIONADO
+          >
+            <div>
+              <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
+                isDarkMode ? 'text-gray-200' : 'text-gray-700'
+              }`}>
+                Nome Completo *
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name} // ADICIONADO
+                onChange={handleInputChange} // ADICIONADO
+                required
+                className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
+                  isDarkMode 
+                    ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
+                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                }`}
+                placeholder="Digite seu nome completo"
+              />
+            </div>
+
+            <div>
+              <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
+                isDarkMode ? 'text-gray-200' : 'text-gray-700'
+              }`}>
+                Telefone *
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone} // ADICIONADO
+                onChange={handleInputChange} // ADICIONADO
+                required
+                className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
+                  isDarkMode 
+                    ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
+                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                }`}
+                placeholder="(11) 99999-9999"
+              />
+            </div>
+
+            {/* CAMPO DE EMAIL - CORRIGIDO */}
+            <div>
+              <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
+                isDarkMode ? 'text-gray-200' : 'text-gray-700'
+              }`}>
+                E-mail *
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email} // ADICIONADO
+                onChange={handleInputChange} // ADICIONADO
+                required
+                className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
+                  isDarkMode 
+                    ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
+                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                }`}
+                placeholder="seu@email.com"
+              />
+            </div>
+
+            <div>
+              <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
+                isDarkMode ? 'text-gray-200' : 'text-gray-700'
+              }`}>
+                Mensagem
+              </label>
+              <textarea
+                name="message"
+                rows={4}
+                value={formData.message} // ADICIONADO
+                onChange={handleInputChange} // ADICIONADO
+                className={`w-full px-4 py-3 rounded-lg border transition-all duration-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 resize-none ${
+                  isDarkMode 
+                    ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400' 
+                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                }`}
+                placeholder="Conte-nos sobre seu projeto..."
+              ></textarea>
+            </div>
+
+            {/* FEEDBACK VISUAL */}
+            {submitStatus === 'success' && (
+              <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+                ✅ Mensagem enviada com sucesso! Redirecionando para WhatsApp...
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+                ❌ Erro ao enviar mensagem. Por favor, tente novamente.
+              </div>
+            )}
+
+            {isSubmitting && (
+              <div className="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative">
+                ⏳ Enviando sua mensagem...
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full ${isSubmitting ? 'bg-gray-400' : 'bg-orange-600 hover:bg-orange-700'} text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center justify-center space-x-2 disabled:cursor-not-allowed`}
+            >
+              {isSubmitting ? (
+                <>
+                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <span>Enviando...</span>
+                </>
+              ) : (
+                <>
+                  <MessageCircle className="w-5 h-5" />
+                  <span>Solicitar Orçamento</span>
+                </>
+              )}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+      
       {/* Final CTA Section */}
       <section className="relative py-20 bg-gradient-to-r from-blue-800 to-blue-700 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -2021,7 +2216,7 @@ const carouselImages2 = [
   >
     <div className="flex items-center justify-center">
       <img 
-        src="https://i.ibb.co/PsQ1TpFd/RODA-P-LOGO-8.png" 
+        src="https://i.ibb.co/ZzZ1rr2H/RODA-P-LOGO-9.png" 
         alt="ConnectWeb" 
         className="h-10 w-auto"
       />
@@ -2115,12 +2310,12 @@ const carouselImages2 = [
                 <li><button onClick={() => scrollToSection('portfolio')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
                   isDarkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}>Portfólio</button></li>
-                <li><button onClick={() => scrollToSection('formulário')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}>Formulário</button></li>
                 <li><button onClick={() => scrollToSection('contato')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
                   isDarkMode ? 'text-gray-300' : 'text-gray-700'
                 }`}>Contato</button></li>
+                <li><button onClick={() => scrollToSection('formulário')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                }`}>Formulário</button></li>
               </ul>
             </div>
           </div>
