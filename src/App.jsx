@@ -25,14 +25,14 @@ import './App.css'
 
 import heroMainImage from './assets/images/hero/hero-main.jpg'
 import heroSecondaryImage from './assets/images/hero/hero-secondary.jpg'
-import responsiveDevicesImage from './assets/images/mockups/responsive-devices.jpg'
+import responsiveDevicesImage from './assets/images/mockups/responsive-devices.png'
 import websiteShowcaseImage from './assets/images/mockups/website-showcase.jpg'
 import happyClientsImage from './assets/images/testimonials/happy-clients.jpg'
 import businessPeopleImage from './assets/images/testimonials/business-people.jpg'
-import Portifolio1 from './assets/images/mockups/Portifolio1.jpg'
-import Portifolio2 from './assets/images/mockups/Portifolio2.jpg'
-import Portifolio3 from './assets/images/mockups/Portifolio3.jpg'
-import Portifolio4 from './assets/images/mockups/Portifolio4.jpg'
+import Portifolio1 from './assets/images/mockups/Portifolio1.png'
+import Portifolio2 from './assets/images/mockups/Portifolio2.png'
+import Portifolio3 from './assets/images/mockups/Portifolio3.png'
+import Portifolio4 from './assets/images/mockups/Portifolio4.png'
 
 // Componente ChatBot ConnectCar - Versão WhatsApp Premium com Imagens e Animações
 const ChatBot = ({ isDarkMode }) => {
@@ -585,25 +585,29 @@ function App() {
   const [submitStatus, setSubmitStatus] = useState('')
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-      
-      // Detectar seção ativa
-      const sections = ['sites', 'planos', 'portfolio', 'contato', 'formulário']
-      const current = sections.find(section => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
-        }
-        return false
-      })
-      setActiveSection(current || '')
-    }
+  const handleScroll = () => {
+    setIsScrolled(window.scrollY > 50)
+    
+    // Detectar seção ativa
+    const sections = ['sites', 'planos', 'portfolio', 'contato', 'formulário']
+    const current = sections.find(section => {
+      const element = document.getElementById(section)
+      if (element) {
+        const rect = element.getBoundingClientRect()
+        // Ajuste: detectar quando a seção está próxima ao topo
+        return rect.top <= 200 && rect.bottom >= 100
+      }
+      return false
+    })
+    setActiveSection(current || '')
+  }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  // Executar imediatamente ao carregar para verificar a seção atual
+  handleScroll()
+  
+  window.addEventListener('scroll', handleScroll)
+  return () => window.removeEventListener('scroll', handleScroll)
+}, [])
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -674,40 +678,39 @@ function App() {
   // 🖼️ CORREÇÃO CARROSSEL: Arrays de imagens para os carrosséis
 // 🖼️ CORREÇÃO CARROSSEL: Arrays de imagens para os carrosséis (agora com 3 imagens)
 // 🖼️ CORREÇÃO CARROSSEL: Arrays de imagens para os carrosséis (agora com 6 imagens)
+// 🖼️ CARROSSEL: Arrays de imagens para os carrosséis (sem links)
 const carouselImages1 = [
-  { image: responsiveDevicesImage, link: "https://www.connectcar123.com" },
-  { image: Portifolio4, link: "https://www.google.com" },
-  { image: Portifolio1, link: "https://www.connectcar123.com" },
-  { image: Portifolio2, link: "https://www.connectcar123.com" },
-  { image: Portifolio3, link: "https://www.connectcar123.com" },
-]
+  { image: responsiveDevicesImage },
+  { image: Portifolio4 },
+  { image: Portifolio1 },
+  { image: Portifolio2 },
+  { image: Portifolio3 },
+];
 
 const carouselImages2 = [
-  { image: websiteShowcaseImage, link: "https://www.connectcar123.com" },
-  { image: responsiveDevicesImage, link: "https://www.connectcar123.com" },
-  { image: Portifolio4, link: "https://www.connectcar123.com" },
-  { image: Portifolio3, link: "https://www.connectcar123.com" },
-  { image: Portifolio2, link: "https://www.connectcar123.com" },
-  { image: Portifolio1, link: "https://www.connectcar123.com" }
-]
+  { image: websiteShowcaseImage },
+  { image: responsiveDevicesImage },
+  { image: Portifolio4 },
+  { image: Portifolio3 },
+  { image: Portifolio2 },
+  { image: Portifolio1 },
+];
 
-
-
-  // 🖼️ CORREÇÃO CARROSSEL: Rotação automática das imagens
-  useEffect(() => {
-    const interval1 = setInterval(() => {
-      setCurrentCarouselImage1(prev => (prev + 1) % carouselImages1.length)
-    }, 4000)
-    
-    const interval2 = setInterval(() => {
-      setCurrentCarouselImage2(prev => (prev + 1) % carouselImages2.length)
-    }, 4500) // Intervalo ligeiramente diferente para não sincronizar
-    
-    return () => {
-      clearInterval(interval1)
-      clearInterval(interval2)
-    }
-  }, [])
+// 🖼️ CORREÇÃO CARROSSEL: Rotação automática das imagens
+useEffect(() => {
+  const interval1 = setInterval(() => {
+    setCurrentCarouselImage1(prev => (prev + 1) % carouselImages1.length);
+  }, 6000);
+  
+  const interval2 = setInterval(() => {
+    setCurrentCarouselImage2(prev => (prev + 1) % carouselImages2.length);
+  }, 4500); // Intervalo ligeiramente diferente para não sincronizar
+  
+  return () => {
+    clearInterval(interval1);
+    clearInterval(interval2);
+  };
+}, []);
 
   const benefits = [
     {
@@ -860,7 +863,7 @@ const carouselImages2 = [
               {[
                 { id: 'sites', label: 'Sites profissionais' },
                 { id: 'planos', label: 'Planos' },
-                { id: 'portfolio', label: 'Portfólio' },
+                { id: 'portfolio', label: 'Rastreamento em Tempo Real' },
                 { id: 'contato', label: 'Contato' },
                 { id: 'formulário', label: 'Formulário' }
               ].map((item) => (
@@ -881,16 +884,28 @@ const carouselImages2 = [
             </nav>
 
             <div className="hidden md:flex items-center space-x-4">
-              <button
-                onClick={toggleDarkMode}
-                className={`p-2 rounded-lg transition-colors duration-300 ${
-                  isDarkMode 
-                    ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700' 
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-              >
-                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              </button>
+<button
+  onClick={toggleDarkMode}
+  className="relative inline-flex items-center focus:outline-none"
+  aria-label={isDarkMode ? "Alternar para modo claro" : "Alternar para modo escuro"}
+>
+  <div className={`relative w-14 h-7 rounded-full transition-all duration-300 ease-in-out ${
+    isDarkMode ? 'bg-orange-500' : 'bg-gray-300'
+  }`}>
+    {/* Ícones dentro do toggle */}
+    <Sun className={`absolute left-1.5 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 transition-all duration-300 ${
+      isDarkMode ? 'opacity-100 text-white' : 'opacity-0'
+    }`} />
+    <Moon className={`absolute right-1.5 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 transition-all duration-300 ${
+      isDarkMode ? 'opacity-0' : 'opacity-100 text-gray-700'
+    }`} />
+    
+    {/* Botão deslizante */}
+    <div className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md transform transition-all duration-300 ease-in-out ${
+      isDarkMode ? 'translate-x-7' : 'translate-x-0'
+    }`} />
+  </div>
+</button>
               <Button variant="outline" className={`transition-colors duration-300 ${
                 isDarkMode 
                   ? 'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' 
@@ -904,17 +919,28 @@ const carouselImages2 = [
             {/* Mobile Menu Button + Dark Mode Toggle */}
             <div className="md:hidden flex items-center space-x-3">
               {/* 📱 CORREÇÃO 7: Botão modo escuro visível no mobile ao lado do hambúrguer */}
-              <button
-                onClick={toggleDarkMode}
-                className={`p-2 rounded-lg transition-colors duration-300 min-h-[48px] min-w-[48px] flex items-center justify-center ${
-                  isDarkMode 
-                    ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700' 
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-                aria-label="Alternar modo escuro"
-              >
-                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              </button>
+<button
+  onClick={toggleDarkMode}
+  className="relative inline-flex items-center focus:outline-none min-h-[48px] min-w-[48px] justify-center"
+  aria-label={isDarkMode ? "Alternar para modo claro" : "Alternar para modo escuro"}
+>
+  <div className={`relative w-14 h-7 rounded-full transition-all duration-300 ease-in-out ${
+    isDarkMode ? 'bg-orange-500' : 'bg-gray-300'
+  }`}>
+    {/* Ícones dentro do toggle */}
+    <Sun className={`absolute left-1.5 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 transition-all duration-300 ${
+      isDarkMode ? 'opacity-100 text-white' : 'opacity-0'
+    }`} />
+    <Moon className={`absolute right-1.5 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 transition-all duration-300 ${
+      isDarkMode ? 'opacity-0' : 'opacity-100 text-gray-700'
+    }`} />
+    
+    {/* Botão deslizante */}
+    <div className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md transform transition-all duration-300 ease-in-out ${
+      isDarkMode ? 'translate-x-7' : 'translate-x-0'
+    }`} />
+  </div>
+</button>
               <button 
                 className={`transition-colors duration-300 min-h-[48px] min-w-[48px] flex items-center justify-center ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -934,7 +960,7 @@ const carouselImages2 = [
                 {[
                   { id: 'sites', label: 'Sites profissionais' },
                   { id: 'planos', label: 'Planos' },
-                  { id: 'portfolio', label: 'Portfólio' },
+                  { id: 'portfolio', label: 'Rastreamento em Tempo Real' },
                   { id: 'contato', label: 'Contato' },
                   { id: 'formulário', label: 'Formulário' }
                 ].map((item) => (
@@ -949,16 +975,28 @@ const carouselImages2 = [
                   </button>
                 ))}
                 <div className="flex items-center space-x-4 pt-2">
-                  <button
-                    onClick={toggleDarkMode}
-                    className={`p-2 rounded-lg transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700' 
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    }`}
-                  >
-                    {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                  </button>
+<button
+  onClick={toggleDarkMode}
+  className="relative inline-flex items-center focus:outline-none"
+  aria-label={isDarkMode ? "Alternar para modo claro" : "Alternar para modo escuro"}
+>
+  <div className={`relative w-14 h-7 rounded-full transition-all duration-300 ease-in-out ${
+    isDarkMode ? 'bg-orange-500' : 'bg-gray-300'
+  }`}>
+    {/* Ícones dentro do toggle */}
+    <Sun className={`absolute left-1.5 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 transition-all duration-300 ${
+      isDarkMode ? 'opacity-100 text-white' : 'opacity-0'
+    }`} />
+    <Moon className={`absolute right-1.5 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 transition-all duration-300 ${
+      isDarkMode ? 'opacity-0' : 'opacity-100 text-gray-700'
+    }`} />
+    
+    {/* Botão deslizante */}
+    <div className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md transform transition-all duration-300 ease-in-out ${
+      isDarkMode ? 'translate-x-7' : 'translate-x-0'
+    }`} />
+  </div>
+</button>
                   <Button variant="outline" className={`transition-colors duration-300 ${
                     isDarkMode 
                       ? 'border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white' 
@@ -992,7 +1030,7 @@ const carouselImages2 = [
             <div className="space-y-8">
               {/* 🚫 CORREÇÃO 1: Botão "Seu Novo Site Começa Aqui!" removido conforme solicitado */}
               
-<div className="space-y-0.5 sm:space-y-2.5 w-[110%] relative z-10">
+<div className="space-y-0.5 sm:space-y-2.5 w-[104%] relative z-10">
   <div className="overflow-visible">
     <div 
       className="text-white text-5xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-none md:leading-tight tracking-tight opacity-0 transform transition-all duration-700 ease-out"
@@ -1007,7 +1045,7 @@ const carouselImages2 = [
               
               <p className="text-base sm:text-lg lg:text-xl text-blue-100 font-medium leading-relaxed">
                 {/* ✅ CORREÇÃO 2.2: Texto corpo base 16px (text-base) com responsividade */}
-                Soluções digitais sob medida para empresas que querem crescer online
+                Plano livre de fidelidade para pessoa física e jurídica, cancele e reative a qualquer momento sem custos ou taxas. 
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -1033,8 +1071,8 @@ const carouselImages2 = [
                   <div className="flex items-center space-x-4">
                     <Monitor className="w-12 h-12 text-orange-400 drop-shadow-lg" />
                     <div>
-                      <h3 className="text-2xl font-black text-white drop-shadow-md">Sites Completos</h3>
-                      <p className="text-orange-300 font-bold text-lg drop-shadow-sm">apenas R$ 38,80/mês</p>
+                      <h3 className="text-2xl font-black text-white drop-shadow-md">Posição Precisa 24h</h3>
+                      <p className="text-orange-300 font-bold text-lg drop-shadow-sm">Segurança em poucos cliques</p>
                     </div>
                   </div>
                 </CardContent>
@@ -1045,10 +1083,10 @@ const carouselImages2 = [
                 {/* 🖼️ CORREÇÃO: Sombreamento interno suave adicionado */}
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4">
-                    <Mail className="w-12 h-12 text-orange-400 drop-shadow-lg" />
+                    <Users className="w-12 h-12 text-orange-400 drop-shadow-lg" />
                     <div>
-                      <h3 className="text-2xl font-black text-white drop-shadow-md">E-mail Profissional</h3>
-                      <p className="text-orange-300 font-bold text-lg drop-shadow-sm">incluso no plano popular</p>
+                      <h3 className="text-2xl font-black text-white drop-shadow-md">Carro, Moto e Frotas</h3>
+                      <p className="text-orange-300 font-bold text-lg drop-shadow-sm">Para pessoa física e jurídica</p>
                     </div>
                   </div>
                 </CardContent>
@@ -1241,13 +1279,13 @@ const carouselImages2 = [
               isDarkMode ? 'text-gray-100' : 'text-gray-800'
             }`}>
               {/* ✅ CORREÇÃO 2.8: H2 hierarquia + contraste + modo escuro */}
-              Acesse e veja qual a melhor opção para o seu negócio.
+              Mais do que um rastreador veicular, otimize toda a gestão da sua frota.
             </h2>
             <p className={`text-base lg:text-lg max-w-3xl mx-auto leading-relaxed transition-colors duration-200 ${
               isDarkMode ? 'text-gray-300' : 'text-gray-600'
             }`}>
               {/* ✅ CORREÇÃO 2.9: Texto corpo 16px + modo escuro */}
-              Sites responsivos e modernos que ajudam empresas a crescer online
+               Com a ConnectCar você agiliza suas demandas com poucos cliques, através do celular e, também do computador.
             </p>
           </div>
 
@@ -1309,42 +1347,41 @@ const carouselImages2 = [
               </div>
             </div>
             <div className="space-y-6 fade-in-up-delay-2">
-              <h3 className={`text-xl lg:text-2xl font-bold transition-colors duration-200 ${
+              <h3 className={`text-2xl lg:text-3xl font-bold transition-colors duration-200 ${
                 isDarkMode ? 'text-gray-100' : 'text-gray-800'
               }`}>
                 {/* ✅ CORREÇÃO 2.10: H3 hierarquia corrigida */}
-                Design responsivo que funciona em todos os dispositivos
+                Funcionalidades que permitem você a estar sempre no controle dos seus veículos.
               </h3>
               <p className={`text-base lg:text-lg leading-relaxed transition-colors duration-200 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
-                Nossos sites se adaptam perfeitamente a computadores, tablets e smartphones, 
-                garantindo uma experiência excelente para todos os seus clientes.
+                Ganhe tempo e otimize toda sua logística, sem necessidade de ficar ligando para motoristas e dependendo de terceiros.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-orange-500" />
                   <span className={`text-sm lg:text-base transition-colors duration-200 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                  }`}>Layout otimizado para mobile</span>
+                  }`}>Acesso fácil e dinâmico</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-orange-500" />
                   <span className={`text-sm lg:text-base transition-colors duration-200 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                  }`}>Carregamento rápido</span>
+                  }`}>Aplicativo para IOS e Android</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-orange-500" />
                   <span className={`text-sm lg:text-base transition-colors duration-200 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                  }`}>SEO otimizado</span>
+                  }`}>Suporte especializado</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <CheckCircle className="w-5 h-5 text-orange-500" />
                   <span className={`text-sm lg:text-base transition-colors duration-200 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                  }`}>Tema escuro e claro (botão no cabeçalho)</span>
+                  }`}>Relatórios em EXCEL</span>
                 </li>
               </ul>
               <Button className="min-h-[48px] bg-orange-500 hover:bg-orange-600 text-white transition-all duration-200 ease-in-out hover:-translate-y-1 interactive-element"
@@ -1362,14 +1399,13 @@ const carouselImages2 = [
                 isDarkMode ? 'text-gray-100' : 'text-gray-800'
               }`}>
                 {/* 🎨 CORREÇÃO: Texto azul convertido para cinza escuro */}
-                Portfólio diversificado para todos os segmentos
+                Chip m2m mult-operadora, mais precisão e estabilidade.
               </h3>
               <p className={`text-lg transition-colors duration-300 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
                 {/* 🎨 CORREÇÃO: Texto azul convertido para cinza escuro */}
-                Já criamos sites para acadêmias, Dentista, Fisioterapeutas, lojas, restaurantes e muito mais. 
-                Cada projeto é pensado e desenvolvido para sua empresa.
+                Nossos aparelhos seguem com um único chip de telemetria que abrange as seguintes operadoras: vivo, tim, oi, claro e algar.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 <div className={`text-center p-4 rounded-lg transition-colors duration-300 ${
@@ -1377,36 +1413,31 @@ const carouselImages2 = [
                 }`}>
                   <div className={`text-2xl font-bold transition-colors duration-300 ${
                     isDarkMode ? 'text-gray-100' : 'text-gray-800'
-                  }`}>200+</div>
+                  }`}>+Estável</div>
                   <div className={`transition-colors duration-300 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                  }`}>Sites criados</div>
+                  }`}>Estabilidade garantida</div>
                 </div>
                 <div className={`text-center p-4 rounded-lg transition-colors duration-300 ${
                   isDarkMode ? 'bg-gray-800' : 'bg-orange-50'
                 }`}>
-                  <div className="text-2xl font-bold text-orange-600">98%</div>
+                  <div className="text-2xl font-bold text-orange-600">+Precisão</div>
                   <div className={`transition-colors duration-300 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                  }`}>Clientes satisfeitos</div>
+                  }`}>Posição real na palma da mão</div>
                 </div>
               </div>
             </div>
             <div className="lg:order-1">
-              <a 
-  href="https://www.connectcar123.com" 
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="block"
->
-  <img 
-    src={websiteShowcaseImage} 
-    alt="Showcase de sites profissionais"
-    className="w-full rounded-lg shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105"
-  />
-</a>
-              {/* 🖼️ CORREÇÃO: Animação de zoom suave adicionada (sem rotação) */}
-            </div>
+  <div className="block">
+    <img 
+      src={websiteShowcaseImage} 
+      alt="Showcase de sites profissionais"
+      className="w-full rounded-lg shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105"
+    />
+  </div>
+  {/* 🖼️ CORREÇÃO: Animação de zoom suave adicionada (sem rotação) */}
+</div>
           </div>
         </div>
       </section>
@@ -1829,7 +1860,7 @@ const carouselImages2 = [
         <div className="space-y-8">
           <div className="flex items-start bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
             <div className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg p-3 mr-4">
-              <svg className="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -1843,7 +1874,7 @@ const carouselImages2 = [
           
           <div className="flex items-start bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
             <div className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg p-3 mr-4">
-              <svg className="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -1857,7 +1888,7 @@ const carouselImages2 = [
           
           <div className="flex items-start bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
             <div className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg p-3 mr-4">
-              <svg className="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
@@ -2203,122 +2234,179 @@ const carouselImages2 = [
       </section>
       
 {/* Footer */}
-      <footer className={`py-12 border-t transition-colors duration-300 ${
-        isDarkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'
-      }`}>
-        <div className="container mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-6">
-  <button
-    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-    className="focus:outline-none"
-  >
-    <div className="flex items-center justify-center">
-      <img 
-        src="https://i.ibb.co/ZzZ1rr2H/RODA-P-LOGO-9.png" 
-        alt="ConnectWeb" 
-        className="h-10 w-auto"
-      />
+<footer className={`py-12 border-t transition-colors duration-300 ${
+  isDarkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'
+}`}>
+  <div className="container mx-auto px-5 sm:px-6 lg:px-8">
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <div className="flex items-center space-x-2 mb-6">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="focus:outline-none"
+          >
+            <div className="flex items-center justify-center">
+              <img 
+                src="https://i.ibb.co/ZzZ1rr2H/RODA-P-LOGO-9.png" 
+                alt="ConnectWeb" 
+                className="h-10 w-auto"
+              />
+            </div>
+          </button>
+          <span className={`text-2xl font-bold transition-colors duration-300 ${
+            isDarkMode ? 'text-gray-100' : 'text-gray-800'
+          }`}></span>
+        </div>
+        <p className={`mb-4 transition-colors duration-300 ${
+          isDarkMode ? 'text-gray-300' : 'text-gray-600'
+        }`}>
+          Criando sites profissionais que fazem sua empresa crescer digitalmente.
+        </p>
+        <div className="flex space-x-4">
+          {/* 📍 Google Meu Negócio */}
+          <a 
+            href="https://www.google.com/maps/place/Rastreamento+Automotivo+ConnectCar/@-23.8886333,-46.7393688,254391m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6b94f1ca0b7a1f61:0xf0b8819b67f7b3a3!8m2!3d-23.8886334!4d-46.7393688!16s%2Fg%2F11rq8w4xzg?entry=ttu&g_ep=EgoyMDI1MDYyNi4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-lg flex items-center justify-center hover:bg-gray-100 transition-colors duration-300 hover:scale-105 transform border border-gray-300 shadow-sm p-2"
+            aria-label="Google Meu Negócio ConnectWeb"
+          >
+            {/* Imagem do Google Meu Negócio com dimensões 400x100 */}
+            <img 
+              src="https://i.ibb.co/ynMGF25p/RODA-P-IMAGEM-GOOGLE-MEU-NEG-CIO-DEFINITIVA.png" 
+              alt="Google Meu Negócio" 
+              className="w-[200px] h-[30px] object-contain"
+              width="400"
+              height="100"
+            />
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 className={`text-lg font-bold mb-4 transition-colors duration-300 ${
+          isDarkMode ? 'text-gray-100' : 'text-gray-800'
+        }`}>Sites Profissionais</h3>
+        <ul className={`space-y-2 transition-colors duration-300 ${
+          isDarkMode ? 'text-gray-300' : 'text-gray-600'
+        }`}>
+          <li><button onClick={() => scrollToSection('portfolio')} className="hover:text-orange-600 transition-colors duration-300 text-left">Rastreamento para Caminhão</button></li>
+          <li><button onClick={() => scrollToSection('portfolio')} className="hover:text-orange-600 transition-colors duration-300 text-left">Rastreamento para Carro e moto</button></li>
+          <li>
+            <button onClick={() => scrollToSection('formulário')} className="hover:text-orange-600 transition-colors duration-300 text-left">Solicitar Cotação</button>
+            
+            {/* Ícones das redes sociais abaixo de "Sites Personalizados" */}
+            <div className="flex space-x-3 mt-3">
+              {/* Facebook */}
+              <a 
+                href="https://www.facebook.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform duration-300"
+                aria-label="Facebook"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              
+              {/* Instagram */}
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform duration-300"
+                aria-label="Instagram"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              
+              {/* YouTube */}
+              <a 
+                href="https://youtube.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform duration-300"
+                aria-label="YouTube"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+              
+              {/* TikTok */}
+              <a 
+                href="https://tiktok.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform duration-300"
+                aria-label="TikTok"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                </svg>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 className={`text-lg font-bold mb-4 transition-colors duration-300 ${
+          isDarkMode ? 'text-gray-100' : 'text-gray-800'
+        }`}>Serviços</h3>
+        <ul className={`space-y-2 transition-colors duration-300 ${
+          isDarkMode ? 'text-gray-300' : 'text-gray-600'
+        }`}>
+          <li className="hover:text-orange-600 transition-colors duration-300">Rua Barão do Rio Branco - Stella Maris - Peruíbe/SP</li>
+          <li>
+            <a 
+              href="https://api.whatsapp.com/send?phone=5511932691882&text=Olá" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-orange-600 transition-colors duration-300"
+            >
+              (11) 93269-1882
+            </a>
+          </li>
+          <li>
+            <a 
+              href="mailto:contato@connectweb.com" 
+              className="hover:text-orange-600 transition-colors duration-300"
+            >
+              contato@connectweb.com
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 className={`text-lg font-bold mb-4 transition-colors duration-300 ${
+          isDarkMode ? 'text-gray-100' : 'text-gray-800'
+        }`}>Links Rápidos</h3>
+        <ul className={`space-y-2 transition-colors duration-300 ${
+          isDarkMode ? 'text-gray-300' : 'text-gray-600'
+        }`}>
+          <li><button onClick={() => scrollToSection('sites')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>Sites Profissionais</button></li>
+          <li><button onClick={() => scrollToSection('planos')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>Planos</button></li>
+          <li><button onClick={() => scrollToSection('portfolio')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>Rastreamento em Tempo Real</button></li>
+          <li><button onClick={() => scrollToSection('contato')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>Contato</button></li>
+          <li><button onClick={() => scrollToSection('formulário')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-700'
+          }`}>Formulário</button></li>
+        </ul>
+      </div>
     </div>
-  </button>
-  <span className={`text-2xl font-bold transition-colors duration-300 ${
-    isDarkMode ? 'text-gray-100' : 'text-gray-800'
-  }`}></span>
-</div>
-              <p className={`mb-4 transition-colors duration-300 ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-600'
-              }`}>
-                Criando sites profissionais que fazem sua empresa crescer digitalmente.
-              </p>
-              <div className="flex space-x-4">
-                {/* 📍 Google Meu Negócio */}
-                <a 
-                  href="https://www.google.com/maps/place/Rastreamento+Automotivo+ConnectCar/@-23.8886333,-46.7393688,254391m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6b94f1ca0b7a1f61:0xf0b8819b67f7b3a3!8m2!3d-23.8886334!4d-46.7393688!16s%2Fg%2F11rq8w4xzg?entry=ttu&g_ep=EgoyMDI1MDYyNi4wIKXMDSoASAFQAw%3D%3D"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white rounded-lg flex items-center justify-center hover:bg-gray-100 transition-colors duration-300 hover:scale-105 transform border border-gray-300 shadow-sm p-2"
-                  aria-label="Google Meu Negócio ConnectWeb"
-                >
-                  {/* Imagem do Google Meu Negócio com dimensões 400x100 */}
-                  <img 
-                    src="https://i.ibb.co/ynMGF25p/RODA-P-IMAGEM-GOOGLE-MEU-NEG-CIO-DEFINITIVA.png" 
-                    alt="Google Meu Negócio" 
-                    className="w-[200px] h-[30px] object-contain"
-                    width="400"
-                    height="100"
-                  />
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h3 className={`text-lg font-bold mb-4 transition-colors duration-300 ${
-                isDarkMode ? 'text-gray-100' : 'text-gray-800'
-              }`}>Sites Profissionais</h3>
-              <ul className={`space-y-2 transition-colors duration-300 ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-600'
-              }`}>
-                <li><button onClick={() => scrollToSection('planos')} className="hover:text-orange-600 transition-colors duration-300 text-left">Plano Essencial</button></li>
-                <li><button onClick={() => scrollToSection('planos')} className="hover:text-orange-600 transition-colors duration-300 text-left">Plano Popular</button></li>
-                <li><button onClick={() => scrollToSection('portfolio')} className="hover:text-orange-600 transition-colors duration-300 text-left">Sites Personalizados</button></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className={`text-lg font-bold mb-4 transition-colors duration-300 ${
-                isDarkMode ? 'text-gray-100' : 'text-gray-800'
-              }`}>Serviços</h3>
-              <ul className={`space-y-2 transition-colors duration-300 ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-600'
-              }`}>
-                <li className="hover:text-orange-600 transition-colors duration-300">Rua Barão do Rio Branco - Stella Maris - Peruíbe/SP</li>
-                <li>
-                  <a 
-                    href="https://api.whatsapp.com/send?phone=5511932691882&text=Olá" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="hover:text-orange-600 transition-colors duration-300"
-                  >
-                    (11) 93269-1882
-                  </a>
-                </li>
-                <li>
-                  <a 
-                    href="mailto:contato@connectweb.com" 
-                    className="hover:text-orange-600 transition-colors duration-300"
-                  >
-                    contato@connectweb.com
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className={`text-lg font-bold mb-4 transition-colors duration-300 ${
-                isDarkMode ? 'text-gray-100' : 'text-gray-800'
-              }`}>Links Rápidos</h3>
-              <ul className={`space-y-2 transition-colors duration-300 ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-600'
-              }`}>
-                <li><button onClick={() => scrollToSection('sites')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}>Sites Profissionais</button></li>
-                <li><button onClick={() => scrollToSection('planos')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}>Planos</button></li>
-                <li><button onClick={() => scrollToSection('portfolio')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}>Portfólio</button></li>
-                <li><button onClick={() => scrollToSection('contato')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}>Contato</button></li>
-                <li><button onClick={() => scrollToSection('formulário')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}>Formulário</button></li>
-              </ul>
-            </div>
-          </div>
 
           <div className={`border-t mt-8 pt-8 text-center transition-colors duration-300 ${
             isDarkMode 
