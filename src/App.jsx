@@ -34,6 +34,13 @@ import Portifolio2 from './assets/images/mockups/Portifolio2.png'
 import Portifolio3 from './assets/images/mockups/Portifolio3.png'
 import Portifolio4 from './assets/images/mockups/Portifolio4.png'
 
+// URLs das logos para modo claro e escuro
+const headerLogoLight = 'https://i.ibb.co/rqPcqsz/CABE-ALHO-RODA-P-LOGO-27.png'
+const headerLogoDark = 'https://i.ibb.co/twS7HfX6/CABE-ALHO-RODA-P-LOGO-25.png' // <-- COLOQUE SUA URL AQUI
+
+const footerLogoLight = 'https://i.ibb.co/rqPcqsz/CABE-ALHO-RODA-P-LOGO-27.png'
+const footerLogoDark = 'https://i.ibb.co/twS7HfX6/CABE-ALHO-RODA-P-LOGO-25.png' // <-- COLOQUE SUA URL AQUI
+
 // Componente ChatBot ConnectCar - Versão WhatsApp Premium com Imagens e Animações
 const ChatBot = ({ isDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -584,46 +591,76 @@ function App() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('')
 
-  useEffect(() => {
+useEffect(() => {
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 50)
     
-    // Detectar seção ativa
+    // Detectar seção ativa com ajuste dinâmico
     const sections = ['sites', 'planos', 'portfolio', 'contato', 'formulário']
+    const header = document.querySelector('header')
+    const headerHeight = header ? header.offsetHeight : 80
+    
     const current = sections.find(section => {
       const element = document.getElementById(section)
       if (element) {
         const rect = element.getBoundingClientRect()
-        // Ajuste: detectar quando a seção está próxima ao topo
-        return rect.top <= 200 && rect.bottom >= 100
+        
+        // Ajuste dinâmico baseado na altura do header
+        // Reduz o thresholdTop para mobile para detecção mais precisa
+        const isMobile = window.innerWidth < 768
+        const thresholdTop = isMobile ? headerHeight + 30 : headerHeight + 50
+        const thresholdBottom = isMobile ? 30 : 100
+        
+        return rect.top <= thresholdTop && rect.bottom >= thresholdBottom
       }
       return false
     })
+    
     setActiveSection(current || '')
   }
 
-  // Executar imediatamente ao carregar para verificar a seção atual
+  // Executar imediatamente ao carregar
   handleScroll()
   
-  window.addEventListener('scroll', handleScroll)
-  return () => window.removeEventListener('scroll', handleScroll)
+  // Otimização: usar debounce para melhor performance
+  let timeoutId
+  const debouncedHandleScroll = () => {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(handleScroll, 50) // 50ms de debounce
+  }
+  
+  window.addEventListener('scroll', debouncedHandleScroll)
+  window.addEventListener('resize', debouncedHandleScroll)
+  
+  return () => {
+    window.removeEventListener('scroll', debouncedHandleScroll)
+    window.removeEventListener('resize', debouncedHandleScroll)
+    clearTimeout(timeoutId)
+  }
 }, [])
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      // 🧩 CORREÇÃO NAVEGAÇÃO: Posicionar exatamente no topo da seção
-      const headerHeight = 80 // Altura aproximada do header fixo
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-      const offsetPosition = elementPosition - headerHeight
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
+const scrollToSection = (sectionId) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    // Fechar menu mobile
+    setIsMenuOpen(false)
+    
+    // Medir a altura do header
+    const header = document.querySelector('header')
+    const headerHeight = header ? header.offsetHeight : 80
+    
+    // Calcular a posição
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+    const offsetPosition = elementPosition - headerHeight
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    })
+  } else {
     setIsMenuOpen(false)
   }
+}
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
@@ -825,7 +862,7 @@ useEffect(() => {
       answer: "Sim, oferecemos suporte técnico contínuo para todos os nossos clientes."
     },
     {
-      question: "Como funciona o programa de parceria de ConhectWeb?",
+      question: "A ConnectCar é uma asseguradora?",
       answer: "Indique e ganhe! Receba R$100,00 a cada indicação que se consolidar em cliente, receba por PIX ou desconte em seu plano."
     },
     {
@@ -837,26 +874,27 @@ useEffect(() => {
   return (
     <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? 'dark bg-gray-900' : 'bg-white'}`}>
       {/* Header */}
-      <header className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? `${isDarkMode ? 'bg-gray-900/80' : 'bg-white/80'} backdrop-blur-md shadow-lg` 
-          : `${isDarkMode ? 'bg-gray-900' : 'bg-white'} shadow-sm`
-      }`}>
-        <div className="container mx-auto px-5 sm:px-6 lg:px-8 py-4">
-          {/* ✅ CORREÇÃO 1.1: Padding lateral mobile mínimo 20px (px-5 = 20px) */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-  <button
-    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-    className="focus:outline-none"
-  >
-    <img
-      src="https://i.ibb.co/C5gyPxjz/CABE-ALHO-RODA-P-LOGO-9.png"
-      alt="Logo ConnectWeb"
-      className={`transition-all duration-300 ${isScrolled ? 'w-47 h-auto' : 'w-50 h-auto'}`}
-    />
-  </button>
-</div>
+<header className={`sticky top-0 z-50 transition-all duration-300 ${
+  isScrolled 
+    ? `${isDarkMode ? 'bg-gray-900/80' : 'bg-white/80'} backdrop-blur-md shadow-lg` 
+    : `${isDarkMode ? 'bg-gray-900' : 'bg-white'} shadow-sm`
+}`}>
+  <div className="container mx-auto px-5 sm:px-6 lg:px-8 py-4">
+    {/* ✅ CORREÇÃO 1.1: Padding lateral mobile mínimo 20px (px-5 = 20px) */}
+    <div className="flex items-center justify-between">
+      <div className="flex items-center space-x-2">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="focus:outline-none group"
+        >
+          <img
+            src={isDarkMode ? headerLogoDark : headerLogoLight}
+            alt="Logo ConnectWeb"
+            className={`transition-all duration-300 ${isScrolled ? 'w-47 h-auto' : 'w-50 h-auto'} group-hover:scale-106 mt-1`}
+            style={{ marginTop: '3px' }}
+          />
+        </button>
+      </div>
             
             {/* Desktop Menu */}
             <nav className="hidden md:flex space-x-8">
@@ -870,7 +908,7 @@ useEffect(() => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`relative font-medium transition-colors duration-300 group ${
+                  className={`relative font-medium transition-colors duration-300 group mt-[4px] ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
                   }`}
                 >
@@ -941,40 +979,75 @@ useEffect(() => {
     }`} />
   </div>
 </button>
-              <button 
-                className={`transition-colors duration-300 min-h-[48px] min-w-[48px] flex items-center justify-center ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Menu de navegação"
-              >
-                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
+  {/* Botão Menu Hambúrguer com animação para X */}
+  <button 
+    className={`transition-colors duration-300 min-h-[48px] min-w-[48px] flex items-center justify-center ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
+    onClick={() => setIsMenuOpen(!isMenuOpen)}
+    aria-label="Menu de navegação"
+  >
+    <div className="relative w-5 h-5">
+      {/* Linha superior */}
+      <span className={`absolute left-0 w-5 h-0.5 transition-all duration-500 ease-in-out ${
+        isMenuOpen 
+          ? 'top-2.5 rotate-45 w-4' 
+          : 'top-0.5'
+      } bg-current`}></span>
+      
+      {/* Linha do meio */}
+      <span className={`absolute left-0 top-2 w-5 h-0.5 transition-all duration-500 ease-in-out ${
+        isMenuOpen 
+          ? 'opacity-0 -translate-x-2' 
+          : 'opacity-100'
+      } bg-current`}></span>
+      
+      {/* Linha inferior */}
+      <span className={`absolute left-0 w-5 h-0.5 transition-all duration-500 ease-in-out ${
+        isMenuOpen 
+          ? 'top-2.5 -rotate-45 w-4' 
+          : 'top-3.5'
+      } bg-current`}></span>
+    </div>
+  </button>
             </div>
           </div>
 
-          {/* Mobile Menu */}
-          <div className={`md:hidden overflow-hidden transition-all duration-300 ${
-            isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-          }`}>
-            <nav className="mt-4 pb-4 border-t pt-4">
-              <div className="flex flex-col space-y-4">
-                {[
-                  { id: 'sites', label: 'Sites profissionais' },
-                  { id: 'planos', label: 'Planos' },
-                  { id: 'portfolio', label: 'Rastreamento em Tempo Real' },
-                  { id: 'contato', label: 'Contato' },
-                  { id: 'formulário', label: 'Formulário' }
-                ].map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`text-left font-medium transition-colors duration-300 ${
-                      isDarkMode ? 'text-gray-300 hover:text-orange-400' : 'text-gray-700 hover:text-orange-500'
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-                <div className="flex items-center space-x-4 pt-2">
+ {/* Mobile Menu com animação suave */}
+<div className={`md:hidden overflow-hidden transition-all duration-700 ease-in-out ${
+  isMenuOpen 
+    ? 'max-h-[500px] opacity-100 translate-y-0' 
+    : 'max-h-0 opacity-0 -translate-y-4'
+}`}>
+  <nav className="mt-4 pb-4 border-t pt-4">
+    <div className="flex flex-col space-y-4">
+      {[
+        { id: 'sites', label: 'Sites profissionais' },
+        { id: 'planos', label: 'Planos' },
+        { id: 'portfolio', label: 'Rastreamento em Tempo Real' },
+        { id: 'contato', label: 'Contato' },
+        { id: 'formulário', label: 'Formulário' }
+      ].map((item, index) => (
+        <button
+          key={item.id}
+          onClick={() => scrollToSection(item.id)}
+          className={`text-left font-medium transition-all duration-500 ease-in-out transform ${
+            isMenuOpen 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 translate-x-4'
+          } ${
+            isDarkMode 
+              ? 'text-gray-300 hover:text-orange-400' 
+              : 'text-gray-700 hover:text-orange-500'
+          }`}
+          style={{ transitionDelay: isMenuOpen ? `${index * 100}ms` : '0ms' }}
+        >
+          {item.label}
+        </button>
+      ))}
+      <div className={`flex items-center space-x-4 pt-2 transition-all duration-500 ease-in-out transform ${
+        isMenuOpen 
+          ? 'opacity-100 translate-x-0' 
+          : 'opacity-0 translate-x-4'
+      }`} style={{ transitionDelay: isMenuOpen ? '400ms' : '0ms' }}>
 <button
   onClick={toggleDarkMode}
   className="relative inline-flex items-center focus:outline-none"
@@ -1045,7 +1118,7 @@ useEffect(() => {
               
               <p className="text-base sm:text-lg lg:text-xl text-blue-100 font-medium leading-relaxed">
                 {/* ✅ CORREÇÃO 2.2: Texto corpo base 16px (text-base) com responsividade */}
-                Plano livre de fidelidade para pessoa física e jurídica, cancele e reative a qualquer momento sem custos ou taxas. 
+                Plano livre de fidelidade, você no controle! Cancele e reative a qualquer momento sem custos ou taxas.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -1053,12 +1126,12 @@ useEffect(() => {
                 <Button size="lg" className="min-h-[48px] bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 ease-in-out hover:-translate-y-1"
                   onClick={() => window.open('https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20saber%20mais%20sobre%20o%20servi%C3%A7o%20de%20rastreamento.&utm_source=site&utm_medium=botao&utm_campaign=geral', '_blank')}>
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  Quero meu site agora
+                  Conhecer gratuitamente
                 </Button>
                 <Button size="lg" className="min-h-[48px] bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-600 hover:border-blue-700 px-8 py-4 text-lg rounded-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 ease-in-out hover:-translate-y-1"
                   onClick={() => window.open('https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20saber%20mais%20sobre%20o%20servi%C3%A7o%20de%20rastreamento.&utm_source=site&utm_medium=botao&utm_campaign=geral', '_blank')}>
                   {/* 🎯 CORREÇÃO HERO: Botão com contraste adequado - fundo azul + texto branco */}
-                  Solicitar orçamento gratuito
+                  Solicitar orçamento
                 </Button>
               </div>
             </div>
@@ -1085,7 +1158,7 @@ useEffect(() => {
                   <div className="flex items-center space-x-4">
                     <Users className="w-12 h-12 text-orange-400 drop-shadow-lg" />
                     <div>
-                      <h3 className="text-2xl font-black text-white drop-shadow-md">Carro, Moto e Frotas</h3>
+                      <h3 className="text-2xl font-black text-white drop-shadow-md">Teste Nosso Serviço</h3>
                       <p className="text-orange-300 font-bold text-lg drop-shadow-sm">Para pessoa física e jurídica</p>
                     </div>
                   </div>
@@ -1275,9 +1348,9 @@ useEffect(() => {
         <div className="container mx-auto px-5 sm:px-6 lg:px-8">
           {/* ✅ CORREÇÃO 1.8: Padding lateral consistente */}
           <div className="text-center mb-12 lg:mb-16 fade-in-up">
-            <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 high-contrast-text transition-colors duration-200 ${
-              isDarkMode ? 'text-gray-100' : 'text-gray-800'
-            }`}>
+        <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 high-contrast-text transition-colors duration-200 ${
+  isDarkMode ? 'text-gray-100' : 'text-gray-800'
+}`}>
               {/* ✅ CORREÇÃO 2.8: H2 hierarquia + contraste + modo escuro */}
               Mais do que um rastreador veicular, otimize toda a gestão da sua frota.
             </h2>
@@ -1395,12 +1468,11 @@ useEffect(() => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center mt-20">
             <div className="space-y-6 lg:order-2">
-              <h3 className={`text-3xl font-bold transition-colors duration-300 ${
-                isDarkMode ? 'text-gray-100' : 'text-gray-800'
-              }`}>
-                {/* 🎨 CORREÇÃO: Texto azul convertido para cinza escuro */}
-                Chip m2m mult-operadora, mais precisão e estabilidade.
-              </h3>
+<h3 className={`text-2xl lg:text-3xl font-bold transition-colors duration-300 ${
+  isDarkMode ? 'text-gray-100' : 'text-gray-800'
+}`}>
+  Chip m2m mult-operadora, mais precisão e estabilidade.
+</h3>
               <p className={`text-lg transition-colors duration-300 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
@@ -2240,23 +2312,23 @@ useEffect(() => {
   <div className="container mx-auto px-5 sm:px-6 lg:px-8">
     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div>
-        <div className="flex items-center space-x-2 mb-6">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="focus:outline-none"
-          >
-            <div className="flex items-center justify-center">
-              <img 
-                src="https://i.ibb.co/ZzZ1rr2H/RODA-P-LOGO-9.png" 
-                alt="ConnectWeb" 
-                className="h-10 w-auto"
-              />
-            </div>
-          </button>
-          <span className={`text-2xl font-bold transition-colors duration-300 ${
-            isDarkMode ? 'text-gray-100' : 'text-gray-800'
-          }`}></span>
-        </div>
+<div className="flex items-center space-x-2 mb-6">
+  <button
+    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+    className="focus:outline-none group"
+  >
+    <div className="flex items-center justify-center">
+      <img 
+        src={isDarkMode ? footerLogoDark : footerLogoLight}
+        alt="ConnectWeb" 
+        className="h-10 w-auto transition-transform duration-300 group-hover:scale-106"
+      />
+    </div>
+  </button>
+  <span className={`text-2xl font-bold transition-colors duration-300 ${
+    isDarkMode ? 'text-gray-100' : 'text-gray-800'
+  }`}></span>
+</div>
         <p className={`mb-4 transition-colors duration-300 ${
           isDarkMode ? 'text-gray-300' : 'text-gray-600'
         }`}>
