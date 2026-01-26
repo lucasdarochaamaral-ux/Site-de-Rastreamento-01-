@@ -23,7 +23,7 @@ import {
 } from 'lucide-react'
 import './App.css'
 
-import heroMainImage from './assets/images/hero/hero-main.jpg'
+import heroVideo from './assets/images/hero/hero-video.mp4'
 import heroSecondaryImage from './assets/images/hero/hero-secondary.jpg'
 import responsiveDevicesImage from './assets/images/mockups/responsive-devices.png'
 import websiteShowcaseImage from './assets/images/mockups/website-showcase.jpg'
@@ -1085,17 +1085,21 @@ useEffect(() => {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section id="sites" className="relative overflow-hidden">
-        {/* 🧩 CORREÇÃO HERO: Fundo azul removido, imagem totalmente visível */}
-        <img 
-          src={heroMainImage}
-          alt="Empresário profissional sorrindo representando sucesso nos negócios com sites profissionais"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-        />
-        {/* Overlay sutil para legibilidade do texto */}
-        <div className="absolute inset-0 bg-black/30"></div>
+{/* Hero Section */}
+<section id="sites" className="relative overflow-hidden">
+  {/* Vídeo de fundo */}
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="absolute inset-0 w-full h-full object-cover"
+  >
+    <source src={heroVideo} type="video/mp4" />
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+  {/* Overlay sutil para legibilidade do texto */}
+  <div className="absolute inset-0 bg-black/30"></div>
         
         <div className="relative container mx-auto px-5 sm:px-6 lg:px-8 py-20 lg:py-32">
           {/* ✅ CORREÇÃO 1.2: Padding lateral consistente na hero section */}
@@ -1170,7 +1174,7 @@ useEffect(() => {
       </section>
 
       {/* Secondary Hero */}
-      <section className="relative py-20 overflow-hidden">
+       <section className="relative py-20 overflow-hidden -mt-[1px]">
         {/* 🎯 CORREÇÃO 2: Imagem de fundo completamente livre, sem overlay esbranquiçado */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
