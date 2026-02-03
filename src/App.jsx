@@ -752,42 +752,42 @@ useEffect(() => {
   const benefits = [
     {
       icon: <Monitor className="w-8 h-8" />,
-      title: "Sites Responsivos",
-      description: "Design que se adapta perfeitamente a todos os dispositivos"
+      title: "Monitoramento em Tempo Real",
+      description: "Acompanhe seu veículo ou frota em uma única tela, através de um sistema dinâmico e completo."
     },
     {
       icon: <Mail className="w-8 h-8" />,
-      title: "E-mails Profissionais",
-      description: "Contas de e-mail personalizadas com seu domínio"
+      title: "Comunicação Operacional",
+      description: "Acesse instruções, informações e novidades do seu plano por e-mail, mais agilidade e segurança."
     },
     {
       icon: <Palette className="w-8 h-8" />,
-      title: "Tema Escuro e Claro",
-      description: "Site com botão no cabeçalho para alterar cor de fundo (Dark e Light)"
+      title: "Plataforma Versátil",
+      description: "Veja históricos de velocidade, configure cercar virtual e realize bloqueio e desbloqueio remoto de veículos. "
     },
     {
       icon: <MessageCircle className="w-8 h-8" />,
-      title: "WhatsApp Integrado",
-      description: "Botão de contato direto via WhatsApp"
+      title: "Notificações Simultâneas",
+      description: "Receba alertas pré programados de saídas e chegadas, excesso de velocidade e evasão de perímetro."
     },
     {
       icon: <Globe className="w-8 h-8" />,
-      title: "Provedor de alta Velocidade",
-      description: "Página com carregamento rápido e estável "
+      title: "Cobertura Nacional",
+      description: "Receba seu rastreador com chip multioperadora, a fim de garantir melhor comunicação e precisão GPS e GPRS. "
     },
     {
       icon: <Headphones className="w-8 h-8" />,
-      title: "Suporte Técnico",
-      description: "Atendimento especializado quando precisar"
+      title: "Suporte Especializado",
+      description: "Conte com profissionais dedicados para exclarecimento de dúvidas e resoluções técnicas."
     }
   ]
 
   const plans = [
     {
-      name: "Plano Essencial",
-      price: "38,80",
-      period: "/mês",
-      description: "Perfeito para pequenas empresas que querem marcar presença online",
+      name: "Para pessoa física que zela pelas suas conquistas",
+      price: "+ Segurança",
+      period: "",
+      description: "Vantagens que ajudam você a cuidar do que realmente importa",
       features: [
         "Site responsivo profissional",
         "Personalizado",
@@ -800,9 +800,9 @@ useEffect(() => {
       highlight: false
     },
     {
-      name: "Plano Popular",
-      price: "43,60",
-      period: "/mês",
+      name: "Indispensável para pequenas e médias empresas",
+      price: "+ Controle",
+      period: "",
       description: "Solução completa com domínio e e-mails profissionais inclusos",
       features: [
         "Tudo do Plano Essencial",
@@ -1115,14 +1115,14 @@ useEffect(() => {
         animation: 'slideUp 3.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards'
       }}
     >
-      Localize seus veículos em tempo real por app e computador
+      Localize seu veículo ou frota em tempo real por app e computador
     </div>
   </div>
 </div>
               
               <p className="text-base sm:text-lg lg:text-xl text-blue-100 font-medium leading-relaxed">
                 {/* ✅ CORREÇÃO 2.2: Texto corpo base 16px (text-base) com responsividade */}
-                Plano livre de fidelidade, você no controle! Cancele e reative a qualquer momento sem custos ou taxas.
+                Plano livre de fidelidade para pessoa física e empresas, você no controle! Cancele e reative a qualquer momento sem custos ou taxas.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -1149,7 +1149,7 @@ useEffect(() => {
                     <Monitor className="w-12 h-12 text-orange-400 drop-shadow-lg" />
                     <div>
                       <h3 className="text-2xl font-black text-white drop-shadow-md">Posição Precisa 24h</h3>
-                      <p className="text-orange-300 font-bold text-lg drop-shadow-sm">Segurança em poucos cliques</p>
+                      <p className="text-orange-300 font-bold text-lg drop-shadow-sm">Reduza custos, ganhe agilidade e aumente sua segurança.</p>
                     </div>
                   </div>
                 </CardContent>
@@ -1162,8 +1162,8 @@ useEffect(() => {
                   <div className="flex items-center space-x-4">
                     <Users className="w-12 h-12 text-orange-400 drop-shadow-lg" />
                     <div>
-                      <h3 className="text-2xl font-black text-white drop-shadow-md">Teste Nosso Serviço</h3>
-                      <p className="text-orange-300 font-bold text-lg drop-shadow-sm">Para pessoa física e jurídica</p>
+                      <h3 className="text-2xl font-black text-white drop-shadow-md">Histórico Completo</h3>
+                      <p className="text-orange-300 font-bold text-lg drop-shadow-sm">Acesse dados diários, mensais e anuais do seu veículo ou frota.</p>
                     </div>
                   </div>
                 </CardContent>
@@ -1186,13 +1186,13 @@ useEffect(() => {
           <div className="max-w-4xl mx-auto space-y-8">
             <h2 className="text-4xl lg:text-5xl font-bold leading-tight text-white drop-shadow-lg">
               {/* 🎯 CORREÇÃO 2: Texto branco com sombra para contraste na imagem livre */}
-              Não importa se é empresa pequena ou grande.
+              Evite ligações para motoristas, obtenha informações em poucos cliques.
               <br />
               <span className="text-white-400 drop-shadow-lg"></span>
             </h2>
             <p className="text-xl text-white drop-shadow-md">
               {/* 🎯 CORREÇÃO 2: Parágrafo com texto branco e sombra para contraste */}
-              Com a gente você tem acesso a um site personalizado que vai de encontro ao perfil da sua empresa.
+              Com nosso aplicativo você economiza combustível, melhora prazos em entregas e toma decisões com base em registros sólidos.
             </p>
           </div>
         </div>
@@ -1210,7 +1210,7 @@ useEffect(() => {
               isDarkMode ? 'text-gray-100' : 'text-gray-800'
             }`}>
               {/* ✅ CORREÇÃO 2.3: H2 com base 24px (text-2xl) responsivo */}
-              São muitas as vantagens de possuir um site com a ConnectWeb
+              Conheça nossas soluções para pessoa física e empresas, aumente sua produtividade com funcionalidades exclusivas.
             </h2>
             <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
           </div>
@@ -1288,23 +1288,23 @@ useEffect(() => {
                     </Badge>
                   </div>
                 )}
-                <CardHeader className="text-center pb-8 relative z-10">
-                  <CardTitle className={`text-2xl font-bold transition-colors duration-300 ${
-                    isDarkMode ? 'text-gray-100' : 'text-gray-800'
-                  }`}>{plan.name}</CardTitle>
-                  <div className="mt-4">
-                    <span className={`text-4xl font-bold transition-colors duration-300 ${
-  isDarkMode ? 'text-orange-400' : 'text-orange-600'
-}`}>R$ {plan.price}</span>
-                    <span className={`transition-colors duration-300 ${
-                      isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}>{plan.period}</span>
-                  </div>
-                  <CardDescription className={`mt-4 transition-colors duration-300 ${
-                    isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                  }`}>{plan.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6 relative z-10">
+<CardHeader className="text-center pb-8 relative z-10 mt-2.5">
+  <CardTitle className={`text-2xl font-bold transition-colors duration-300 ${
+    isDarkMode ? 'text-gray-100' : 'text-gray-800'
+  }`}>{plan.name}</CardTitle>
+  <div className="mt-4">
+    <span className={`text-4xl font-bold transition-colors duration-300 ${
+      isDarkMode ? 'text-orange-400' : 'text-orange-600'
+    }`}>{plan.price}</span>
+    <span className={`transition-colors duration-300 ${
+      isDarkMode ? 'text-gray-400' : 'text-gray-600'
+    }`}>{plan.period}</span>
+  </div>
+  <CardDescription className={`mt-4 transition-colors duration-300 ${
+    isDarkMode ? 'text-gray-300' : 'text-gray-600'
+  }`}>{plan.description}</CardDescription>
+</CardHeader>
+                <CardContent className="space-y-6 relative z-10 -mt-[20px]">
                   <ul className="space-y-3">
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center space-x-3 slide-up" style={{animationDelay: `${featureIndex * 0.1}s`}}>
@@ -1934,8 +1934,8 @@ useEffect(() => {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div>
         <div className="space-y-8">
-          <div className="flex items-start bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
-            <div className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg p-3 mr-4">
+          <div className="flex items-start bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-orange-500 hover:-translate-y-1 hover:scale-[1.01] transform-gpu">
+            <div className="flex-shrink-0 bg-gray-50 dark:bg-gray-700 rounded-lg p-3 mr-4">
               <svg className="w-6 h-6 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
@@ -1948,8 +1948,8 @@ useEffect(() => {
             </div>
           </div>
           
-          <div className="flex items-start bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
-            <div className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg p-3 mr-4">
+          <div className="flex items-start bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-orange-500 hover:-translate-y-1 hover:scale-[1.01] transform-gpu">
+            <div className="flex-shrink-0 bg-gray-50 dark:bg-gray-700 rounded-lg p-3 mr-4">
               <svg className="w-6 h-6 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
@@ -1962,8 +1962,8 @@ useEffect(() => {
             </div>
           </div>
           
-          <div className="flex items-start bg-gray-50 dark:bg-gray-800 p-6 rounded-xl hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-orange-500 hover:-translate-y-2 hover:scale-[1.02] transform-gpu">
-            <div className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg p-3 mr-4">
+          <div className="flex items-start bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-orange-500 hover:-translate-y-1 hover:scale-[1.01] transform-gpu">
+            <div className="flex-shrink-0 bg-gray-50 dark:bg-gray-700 rounded-lg p-3 mr-4">
               <svg className="w-6 h-6 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
@@ -1978,9 +1978,9 @@ useEffect(() => {
         </div>
       </div>
       
-      <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-xl">
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-200 dark:bg-gray-700 rounded-full mb-6">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-50 dark:bg-gray-700 rounded-full mb-6">
             <svg className="w-10 h-10 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
