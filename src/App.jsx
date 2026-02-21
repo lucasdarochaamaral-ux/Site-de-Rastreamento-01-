@@ -23,7 +23,8 @@ import {
 } from 'lucide-react'
 import './App.css'
 
-import heroVideo from './assets/images/hero/hero-video.mp4'
+import heroVideoDesktop from './assets/images/hero/hero-video-desktop.mp4'   // vídeo de alta resolução para desktop
+import heroVideoMobile from './assets/images/hero/hero-video-mobile.mp4'     // vídeo otimizado para mobile
 import heroSecondaryImage from './assets/images/hero/hero-secondary.jpg'
 import responsiveDevicesImage from './assets/images/mockups/responsive-devices.png'
 import websiteShowcaseImage from './assets/images/mockups/website-showcase.jpg'
@@ -579,6 +580,7 @@ function App() {
   const [activeSection, setActiveSection] = useState('')
   const [currentCarouselImage1, setCurrentCarouselImage1] = useState(0)
   const [currentCarouselImage2, setCurrentCarouselImage2] = useState(0)
+  
   // 🖼️ CORREÇÃO CARROSSEL: Estados para controlar imagens do carrossel
 
   // 💬 EMAILJS: Estados para o formulário
@@ -784,34 +786,34 @@ useEffect(() => {
 
   const plans = [
     {
-      name: "Para pessoa física que zela pelas suas conquistas",
-      price: "+ Segurança",
+      name: "Para pessoas que buscam proteger seu veículo e sua família",
+      price: "Pessoa Física",
       period: "",
       description: "Vantagens que ajudam você a cuidar do que realmente importa",
       features: [
-        "Site responsivo profissional",
-        "Personalizado",
-        "Formulário de contato",
-        "WhatsApp integrado",
-        "Certificado SSL",
-        "Suporte técnico",
-        "Tema dark e light (botão no cabeçalho)"
+        "Posição em Tempo Real 24h",
+        "Acesso por celular e computador",
+        "Históricos de Percursos",
+        "Históricos de Velocidade",
+        "Bloqueio e Desbloqueio Remoto",
+        "Alertas de Excesso de Velocidade",
+        "Alerta de Ignição Ligada e Desligada"
       ],
       highlight: false
     },
     {
-      name: "Indispensável para pequenas e médias empresas",
-      price: "+ Controle",
+      name: "Para empresas que visam redução de custos e agilidade",
+      price: "Empresas",
       period: "",
-      description: "Solução completa com domínio e e-mails profissionais inclusos",
+      description: "Solução completa para gerenciar seus veículos e agilizar suas demandas",
       features: [
-        "Tudo do Plano Essencial",
-        "Domínio grátis por 1 ano",
-        "3 contas de e-mail profissionais",
-        "Integração de e-mail com Gmail",
-        "Personalizações Excusivas",
-        "SEO otimizado",
-        "Modificações Agendadas"
+        "Todas as Funcionalidades Pessoa Física",
+        "Painel de Gerenciamento",
+        "Controle Preciso de Trajetos",
+        "Controle de Perímetro",
+        "Alertas de Saídas e Chegadas",
+        "Acesso Simultâneo",
+        "Detalhamento por Excel"
       ],
       highlight: true
     }
@@ -819,28 +821,28 @@ useEffect(() => {
 
   const testimonials = [
     {
-      name: "Maria Silva",
-      company: "Silva Advocacia",
+      name: "Hélio Mendes",
+      company: "Construmais varejo",
       rating: 5,
-      comment: "O site ficou exatamente como imaginei. Profissional e moderno. Recomendo!"
+      comment: "Reduzimos em 35% os custos com combustível após o rastreamento. A ConnectCar otimizou nossas rotas e aumentou a produtividade da frota."
     },
     {
-      name: "João Santos",
-      company: "Santos Consultoria",
+      name: "João Nogueira",
+      company: "Nogueira Transportes",
       rating: 5,
-      comment: "Excelente atendimento e entrega rápida. Meu negócio cresceu 40% após o site."
+      comment: "Antes, tínhamos prejuízos com desvios de rota. Agora, com este serviço, a disciplina da equipe melhorou e os custos caíram considerávelmente."
     },
     {
-      name: "Ana Costa",
-      company: "Acedêmia Senior",
+      name: "Pedro Henrique",
+      company: "Cliente Pessoa Física",
       rating: 5,
-      comment: "Site lindo e funcional. Os clientes elogiam muito o design e facilidade de uso."
+      comment: "A tranquilidade de saber que minha esposa e filhos estão seguros no trânsito não tem preço. O app é simples e os alertas são imediatos."
     },
     {
       name: "Carlos Oliveira",
-      company: "Oliveira Engenharia",
+      company: "Reciclagem Pompéia",
       rating: 5,
-      comment: "Suporte excepcional e site que realmente converte visitantes em clientes."
+      comment: "Passava o dia ligando para saber onde estavam meus motoristas. Agora vejo tudo em tempo real na tela. Melhorou toda a agilidade e entrega da minha equipe."
     }
   ]
 
@@ -1087,17 +1089,20 @@ useEffect(() => {
 
 {/* Hero Section */}
 <section id="sites" className="relative overflow-hidden">
-  {/* Vídeo de fundo */}
-  <video
-    autoPlay
-    loop
-    muted
-    playsInline
-    className="absolute inset-0 w-full h-full object-cover"
-  >
-    <source src={heroVideo} type="video/mp4" />
-    Seu navegador não suporta o elemento de vídeo.
-  </video>
+      {/* Vídeo de fundo com sources para desktop e mobile */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        {/* Versão para mobile (max-width: 768px) */}
+        <source src={heroVideoMobile} type="video/mp4" media="(max-width: 768px)" />
+        {/* Versão para desktop (min-width: 769px) */}
+        <source src={heroVideoDesktop} type="video/mp4" media="(min-width: 769px)" />
+        Seu navegador não suporta o elemento de vídeo.
+      </video>
   {/* Overlay sutil para legibilidade do texto */}
   <div className="absolute inset-0 bg-black/30"></div>
         
@@ -1261,13 +1266,13 @@ useEffect(() => {
               isDarkMode ? 'text-gray-100' : 'text-gray-800'
             }`}>
               {/* ✅ CORREÇÃO 2.6: H2 hierarquia corrigida + contraste */}
-              Escolha o plano ideal para sua empresa
+              Pensado para atender a demanda de pessoas e empresas
             </h2>
             <p className={`text-base lg:text-lg max-w-3xl mx-auto leading-relaxed transition-colors duration-200 ${
               isDarkMode ? 'text-gray-300' : 'text-gray-600'
             }`}>
               {/* ✅ CORREÇÃO 2.7: Texto corpo base 16px + leading-relaxed */}
-              Planos transparentes e acessíveis, sem surpresas. Tudo que você precisa para ter presença digital profissional.
+              Planos transparentes e acessíveis, sem surpresas. Tudo que você precisa para ter tranquilidade, controle e segurança.
             </p>
           </div>
 
@@ -1528,10 +1533,10 @@ useEffect(() => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Histórias de sucesso
+              Depoimentos 
             </h2>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Depoimentos de empresários que transformaram seus negócios com nossos sites profissionais
+              Confira algumas experiências de pessoas e empresas que utilizam o serviço de rastreamento da ConnectCar
             </p>
           </div>
 
@@ -1569,7 +1574,7 @@ useEffect(() => {
                   isDarkMode ? 'text-gray-100' : 'text-gray-800'
                 }`}>
                   {/* 🎨 CORREÇÃO TIPOGRAFIA: Cor cinza escuro ao invés de azul */}
-                  Conheça melhor quem cuida do seu site
+                  Levando tecnologia e confiança para pessoas e empresas
                 </h2>
                 <div className="w-24 h-1 bg-orange-500"></div>
               </div>
