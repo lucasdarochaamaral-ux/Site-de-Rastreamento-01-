@@ -847,29 +847,33 @@ useEffect(() => {
   ]
 
   const faqItems = [
-    {
-      question: "Quanto tempo leva para criar meu site?",
-      answer: "Entregamos seu site em até 10 dias úteis, personalizado e com seu domínio e e-mails criados."
+        {
+      question: "Vocês atendem pessoa física e jurídica?",
+      answer: "Sim, atendemos pessoa física, garantindo mais segurança para veículos particulares e pessoa jurídica, oferecendo soluções completas para gerenciamento de frotas e controle de saídas e chegadas."
     },
     {
-      question: "Posso fazer alterações no site depois de pronto?",
-      answer: "Sim, você pode escolher imagens, textos, cores e muito mais. Aproveite o Plano Popular para realizar modificações agendadas."
+      question: "O aplicativo é fácil de usar, consigo acessar também através do computador?",
+      answer: "Sim, nosso aplicativo de rastreamento veicular é intuitivo e permite acompanhar a localização em tempo real, visualizar trajetos percorridos e realizar o bloqueio remoto do veículo. O acesso também pode ser feito pelo computador ou tablet, garantindo praticidade na gestão."
     },
     {
-      question: "O site funciona em celulares?",
-      answer: "Todos os nossos sites são responsivos e funcionam perfeitamente em computadores, tablets e smartphones."
+      question: "Como funciona o bloqueador remoto?",
+      answer: "Enviamos o aparelho rastreador apto para o bloqueio do seu veículo, que pode ser acionado pelo aplicativo, computador ou tablet. Essa tecnologia aumenta a segurança veicular e permite mais controle sobre o seu patrimônio."
     },
     {
-      question: "Vocês oferecem suporte após a entrega?",
-      answer: "Sim, oferecemos suporte técnico contínuo para todos os nossos clientes."
+      question: "Consigo acompanhar todos os veículos em uma única tela?",
+      answer: "Sim, em poucos clique você pode ter acesso a todos os veículos, com informações precisas e atualizadas em tempo real, ideal para gestão de frotas, possibilitando redução de custos e maior agilidade."
+    },
+    {
+      question: "Vocês oferecem suporte especializado?",
+      answer: "Nossos clientes contam com auxílio em todo o processo, desde a contratação até o uso do serviço de rastreamento automotivo."
     },
     {
       question: "A ConnectCar é uma asseguradora?",
-      answer: "Indique e ganhe! Receba R$100,00 a cada indicação que se consolidar em cliente, receba por PIX ou desconte em seu plano."
+      answer: "Não, a ConnectCar é uma empresa especializada em rastreamento veicular e monitoramento em tempo real, focada em aumentar a segurança, otimizar logísticas e reduzir custos operacionais."
     },
     {
-      question: "Como funciona o programa de parceria de ConhectWeb?",
-      answer: "Indique e ganhe! Receba R$100,00 a cada indicação que se consolidar em cliente, receba por PIX ou desconte em seu plano."
+      question: "Como funciona o programa de parceria da ConhectCar?",
+      answer: "Clientes e não clientes podem indicar novos contratos de rastreamento veicular. O pagamento é feito via PIX, podendo chegar a até R$150,00 por cliente consolidado."
     }
   ]
 
@@ -1114,14 +1118,14 @@ useEffect(() => {
               
 <div className="space-y-0.5 sm:space-y-2.5 w-[104%] relative z-10">
   <div className="overflow-visible">
-    <div 
+    <h1 
       className="text-white text-5xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-none md:leading-tight tracking-tight opacity-0 transform transition-all duration-700 ease-out"
       style={{
         animation: 'slideUp 3.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards'
       }}
     >
       Localize seu veículo ou frota em tempo real por app e computador
-    </div>
+    </h1>
   </div>
 </div>
               
@@ -1574,7 +1578,7 @@ useEffect(() => {
                   isDarkMode ? 'text-gray-100' : 'text-gray-800'
                 }`}>
                   {/* 🎨 CORREÇÃO TIPOGRAFIA: Cor cinza escuro ao invés de azul */}
-                  Levando tecnologia e confiança para pessoas e empresas
+                  Levando connectividade para pessoas e empresas
                 </h2>
                 <div className="w-24 h-1 bg-orange-500"></div>
               </div>
@@ -1608,7 +1612,7 @@ useEffect(() => {
                     }`}>Satisfação garantida</h3>
                     <p className={`transition-colors duration-300 ${
                       isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                    }`}>empresas atendidas com excelência</p>
+                    }`}>atendimento de excelência</p>
                   </div>
                 </div>
                 
@@ -1626,7 +1630,7 @@ useEffect(() => {
                     }`}>Experiência e compromisso</h3>
                     <p className={`transition-colors duration-300 ${
                       isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                    }`}>Profissionais focados no cliente e em seus projetos</p>
+                    }`}>Profissionais focados em auxiliar o cliente em todo o processo</p>
                   </div>
                 </div>
               </div>
@@ -1635,8 +1639,7 @@ useEffect(() => {
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
                 {/* 🎨 CORREÇÃO: Texto azul convertido para cinza escuro */}
-                A ConnectWeb acredita que sua missão é proporcionar crescimento e sucesso às empresas 
-                através de sites profissionais que realmente convertem visitantes em clientes.
+                A ConnectCar é focada na otimização logística de pequenas e médias empresas, oferecendo segurança por meio de um sistema dinâmico e completo.
               </p>
 
               <Button className="bg-orange-500 hover:bg-orange-600 text-white" size="lg"
@@ -1695,15 +1698,13 @@ useEffect(() => {
                 isDarkMode ? 'text-gray-100' : 'text-gray-800'
               }`}>
                 {/* 🎨 CORREÇÃO 5: Azul convertido para cinza escuro + modo escuro */}
-                Seja um parceiro ConnectWeb
+                Seja um parceiro ConnectCar
               </h2>
               <p className={`text-lg transition-colors duration-300 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
                 {/* 🎨 CORREÇÃO 5: Azul convertido para cinza escuro + modo escuro */}
-                Venha empreender conosco! Amplie seus horizontes e ganhos sendo um parceiro ConnectWeb, 
-                uma empresa em crescimento no mercado de criação de sites profissionais, 
-                reconhecida pela qualidade e com mais de 200 sites online.
+                Indique nossos serviços e ganhe até R$150,00 por cliente consolidado. Todas as indicações são acumulativas e você não precisa fazer nenhum investimento. Comece hoje mesmo!
               </p>
               <Button className="bg-orange-500 hover:bg-orange-600 text-white" size="lg"
                 onClick={() => window.open('https://api.whatsapp.com/send?phone=5511932691882&text=Ol%C3%A1,%20tudo%20bem!%20Gostaria%20de%20saber%20mais%20sobre%20o%20servi%C3%A7o%20de%20rastreamento.&utm_source=site&utm_medium=botao&utm_campaign=geral', '_blank')}>
@@ -1865,7 +1866,7 @@ useEffect(() => {
   <div className="container mx-auto px-4">
     <div className="text-center mb-16">
       <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-        Atendimento ConnectWeb
+        Atendimento ConnectCar
       </h2>
       <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
     </div>
@@ -1876,7 +1877,7 @@ useEffect(() => {
           <CardContent className="p-6">
             <MessageCircle className="w-12 h-12 text-orange-400 mx-auto mb-4" />
             <h3 className="text-lg font-bold mb-2">WhatsApp</h3>
-            <p className="text-blue-100">Atendimento rápido e exclusivo</p>
+            <p className="text-blue-100">Orçamento rápido e exclusivo</p>
           </CardContent>
         </Card>
       </a>
@@ -1896,7 +1897,7 @@ useEffect(() => {
           <CardContent className="p-6">
             <Monitor className="w-12 h-12 text-blue-300 mx-auto mb-4" />
             <h3 className="text-lg font-bold mb-2">Demonstração</h3>
-            <p className="text-blue-100">Acesse nossos modelos de site</p>
+            <p className="text-blue-100">Acesse nosso perfil teste</p>
           </CardContent>
         </Card>
       </a>
@@ -1946,9 +1947,9 @@ useEffect(() => {
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Empresa de Logística</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Redução de custos e demandas</h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Redução de 45% nos custos operacionais e aumento de 60% na eficiência das entregas após 3 meses de implementação.
+                Redução de 35% nos custos operacionais e aumento de 40% na eficiência das entregas após 3 meses de implementação.
               </p>
             </div>
           </div>
@@ -1960,9 +1961,9 @@ useEffect(() => {
               </svg>
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Comércio Eletrônico</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Recuperação de veículo e cargas</h3>
               <p className="text-gray-600 dark:text-gray-300">
-                Aumento de 85% na satisfação do cliente e redução de 30% em chamados de suporte relacionados a entregas.
+                Aumento real na possibilidade de recuperação de veículos, motocicletas caminhões e cargas.
               </p>
             </div>
           </div>
@@ -2341,7 +2342,7 @@ useEffect(() => {
         <p className={`mb-4 transition-colors duration-300 ${
           isDarkMode ? 'text-gray-300' : 'text-gray-600'
         }`}>
-          Criando sites profissionais que fazem sua empresa crescer digitalmente.
+          Veja o que nossos clientes dizem em nosso perfil do Google Maps.
         </p>
         <div className="flex space-x-4">
           {/* 📍 Google Meu Negócio */}
