@@ -2,46 +2,134 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sites Profissionais para Empresas | ConnectWeb</title>
-    <meta name="description" content="Crie seu site profissional com e-mail personalizado, WhatsApp integrado e suporte técnico. Planos acessíveis e entrega rápida." />
-    <meta name="keywords" content="criação de sites para empresas, sites profissionais responsivos, venda de sites prontos, empresa que faz sites, site com e-mail personalizado, site com WhatsApp integrado, planos de sites acessíveis" />
-    <meta name="author" content="ConnectWeb" />
-    <meta property="og:title" content="Sites Profissionais para Empresas | ConnectWeb" />
-    <meta property="og:description" content="Crie seu site profissional com e-mail personalizado, WhatsApp integrado e suporte técnico. Planos acessíveis e entrega rápida." />
+
+    <title>Rastreamento Veicular para Frotas e Empresas | ConnectCar</title>
+
+    <meta
+      name="description"
+      content="Rastreamento veicular para empresas, frotas, carros, motos e caminhões. Monitore em tempo real, acompanhe rotas, receba alertas e solicite uma cotação com a ConnectCar."
+    />
+
+    <meta
+      name="keywords"
+      content="rastreamento veicular, rastreamento de frotas, rastreador veicular para empresas, monitoramento de frotas, gestão de frotas com GPS, rastreamento em tempo real, bloqueio remoto veicular, rastreador para caminhão, rastreador para carro, rastreador para moto"
+    />
+
+    <meta name="author" content="ConnectCar" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f97316" />
+
+    <!-- CANONICAL com www -->
+    <link rel="canonical" href="https://www.connectcar123.com/" />
+
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Rastreamento Veicular para Frotas e Empresas | ConnectCar" />
+    <meta
+      property="og:description"
+      content="Controle sua frota em tempo real com rastreamento veicular, alertas, histórico de rotas e suporte especializado. Solicite uma cotação."
+    />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.connectcar123.com/" />
+    <meta property="og:site_name" content="ConnectCar" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- 🖼️ IMAGEM PARA COMPARTILHAMENTO (OG IMAGE) -->
+    <meta property="og:image" content="https://www.connectcar123.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ConnectCar - Rastreamento Veicular para Frotas e Empresas" />
+
+    <!-- Twitter/X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Rastreamento Veicular para Frotas e Empresas | ConnectCar" />
+    <meta
+      name="twitter:description"
+      content="Rastreamento veicular em tempo real para empresas, frotas, carros, motos e caminhões."
+    />
+    <meta name="twitter:image" content="https://www.connectcar123.com/og-image.png" />
+
+    <!-- SEO local + negócio -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "ConnectCar",
+        "description": "Empresa especializada em rastreamento veicular, monitoramento de frotas, bloqueio remoto e gestão de veículos em tempo real.",
+        "url": "https://www.connectcar123.com/",
+        "telephone": "+55 11 93269-1882",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Barão do Rio Branco, 1121",
+          "addressLocality": "Peruíbe",
+          "addressRegion": "SP",
+          "postalCode": "11770-390",
+          "addressCountry": "BR"
+        },
+        "areaServed": "Brasil",
+        "priceRange": "$$",
+        "sameAs": []
+      }
+    </script>
+
+    <!-- Serviços principais -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Rastreamento veicular para frotas",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "ConnectCar"
+        },
+        "areaServed": "Brasil",
+        "serviceType": "Rastreamento veicular, gestão de frotas, monitoramento GPS e bloqueio remoto",
+        "description": "Solução de rastreamento veicular para empresas e pessoas físicas, com localização em tempo real, histórico de rotas, alertas, relatórios e suporte especializado."
+      }
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+    ></script>
+
     <script type="text/javascript">
-      (function(){
+      (function () {
         emailjs.init("lWr4FDwEmFJBRrC5Q");
       })();
 
-      // Aguardar o carregamento completo da página
-      window.addEventListener('load', function() {
+      window.addEventListener("load", function () {
         const form = document.getElementById("formulario-contato");
+
         if (form) {
-          form.addEventListener("submit", function(event) {
+          form.addEventListener("submit", function (event) {
             event.preventDefault();
 
-            emailjs.sendForm("service_uaf8zg8", "template_c04hfeu", this)
-              .then(() => {
+            emailjs.sendForm("service_uaf8zg8", "template_c04hfeu", this).then(
+              () => {
                 alert("Mensagem enviada com sucesso!");
                 this.reset();
-              }, (error) => {
+              },
+              (error) => {
                 alert("Erro ao enviar. Tente novamente.");
                 console.log(error);
-              });
+              }
+            );
           });
         }
       });
     </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

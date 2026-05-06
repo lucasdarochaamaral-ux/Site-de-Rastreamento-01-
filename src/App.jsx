@@ -23,24 +23,39 @@ import {
 } from 'lucide-react'
 import './App.css'
 
-import heroVideoDesktop from './assets/images/hero/hero-video-desktop.mp4'   // vídeo de alta resolução para desktop
-import heroVideoMobile from './assets/images/hero/hero-video-mobile.mp4'     // vídeo otimizado para mobile
-import heroSecondaryImage from './assets/images/hero/hero-secondary.jpg'
-import responsiveDevicesImage from './assets/images/mockups/responsive-devices.png'
-import websiteShowcaseImage from './assets/images/mockups/website-showcase.jpg'
-import happyClientsImage from './assets/images/testimonials/happy-clients.jpg'
-import businessPeopleImage from './assets/images/testimonials/business-people.jpg'
-import Portifolio1 from './assets/images/mockups/Portifolio1.png'
-import Portifolio2 from './assets/images/mockups/Portifolio2.png'
-import Portifolio3 from './assets/images/mockups/Portifolio3.png'
-import Portifolio4 from './assets/images/mockups/Portifolio4.png'
+import heroVideoDesktop from './assets/images/hero/rastreamento-veicular-em-tempo-real-como-funciona-connectcar.mp4'   // vídeo de alta resolução para desktop
+import heroVideoMobile from './assets/images/hero/rastreamento-automotivo-em-tempo-real-como-funciona-connectcar.mp4'     // vídeo otimizado para mobile
+import heroSecondaryImage from './assets/images/hero/rastreamento-veicular-tempo-real-gps-connectcar.jpg'
+import planoderastreamentoparaveículoscomerciais from './assets/images/mockups/plano-de-rastreamento-para-veículos-comerciais.png'
+import rastreamentoveicularcombloqueioremotopreço from './assets/images/mockups/rastreamento-veicular-com-bloqueio-remoto-preço.jpg'
+import clientessatisfeitosrastreamentofrotas from './assets/images/testimonials/clientes-satisfeitos-rastreamento-frotas.jpg'
+import atendimentorastreamentofrotasempresa from './assets/images/testimonials/atendimento-rastreamento-frotas-empresa.jpg'
+import contratarrastreamentodefrotas from './assets/images/mockups/contratar-rastreamento-de-frotas.png'
+import preçorastreamentoveicularparaempresas from './assets/images/mockups/preço-rastreamento-veicular-para-empresas.png'
+import melhorrastreadorparafrotaempresarial from './assets/images/mockups/melhor-rastreador-para-frota-empresarial.png'
+import empresaderastreamentodefrotasGPS from './assets/images/mockups/empresa-de-rastreamento-de-frotas-GPS.png'
 
-// URLs das logos para modo claro e escuro
-const headerLogoLight = 'https://i.ibb.co/rqPcqsz/CABE-ALHO-RODA-P-LOGO-27.png'
-const headerLogoDark = 'https://i.ibb.co/twS7HfX6/CABE-ALHO-RODA-P-LOGO-25.png' // <-- COLOQUE SUA URL AQUI
+// IMPORT DAS LOGOS LOCAIS
+import headerLogoLightImg from './assets/images/hero/rastreador-veicular-para-frotas-empresariais-connectcar.png'
+import headerLogoDarkImg from './assets/images/hero/monitoramento-de-frotas-empresariais-gps-connectcar.png'
+import footerLogoLightImg from './assets/images/hero/empresa-rastreamento-frotas-connectcar.png'
+import footerLogoDarkImg from './assets/images/hero/rastreador-veicular-frotas-gps-connectcar-dark.png'
 
-const footerLogoLight = 'https://i.ibb.co/rqPcqsz/CABE-ALHO-RODA-P-LOGO-27.png'
-const footerLogoDark = 'https://i.ibb.co/twS7HfX6/CABE-ALHO-RODA-P-LOGO-25.png' // <-- COLOQUE SUA URL AQUI
+// IMPORT DO SELO DE VERIFICAÇÃO (adicione esta linha)
+import verificadoImg from './assets/images/hero/chat-verificado-empresa-rastreamento-connectcar.png'
+
+// IMPORT DO AVATAR DO CHAT (adicione esta linha)
+import avatarChatImg from './assets/images/hero/atendimento-online-rastreamento-veicular-connectcar.png'
+
+// IMPORT DA IMAGEM DO GOOGLE MEU NEGÓCIO (adicione esta linha)
+import googleMeuNegocioImg from './assets/images/hero/avaliacoes-clientes-rastreamento-veicular-connectcar.png'
+
+// URLs das logos - AGORA USANDO IMAGENS LOCAIS
+const headerLogoLight = headerLogoLightImg
+const headerLogoDark = headerLogoDarkImg
+
+const footerLogoLight = footerLogoLightImg
+const footerLogoDark = footerLogoDarkImg
 
 // Componente ChatBot ConnectCar - Versão WhatsApp Premium com Imagens e Animações
 const ChatBot = ({ isDarkMode }) => {
@@ -285,29 +300,29 @@ const ChatBot = ({ isDarkMode }) => {
             }
           `}>
             <div className="flex items-center space-x-3">
-              {/* Avatar com imagem personalizada */}
-              <div className="relative">
-                <img 
-                  src="https://i.ibb.co/R43gV7Hg/ABA-NAVEGADOR-IMAGEM-FAVICON-5.jpg" 
-                  alt="ConnectCar"
-                  className="w-10 h-10 rounded-full object-cover border-2 border-white"
-                />
-                {/* Indicador online */}
-                <div className={`
-                  absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2
-                  ${isDarkMode ? 'bg-green-500 border-[#202c33]' : 'bg-green-400 border-[#008069]'}
-                `}></div>
-              </div>
+  {/* Avatar com imagem personalizada */}
+  <div className="relative">
+    <img 
+      src={avatarChatImg}
+      alt="ConnectCar"
+      className="w-10 h-10 rounded-full object-cover border-2 border-white"
+    />
+    {/* Indicador online */}
+    <div className={`
+      absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2
+      ${isDarkMode ? 'bg-green-500 border-[#202c33]' : 'bg-green-400 border-[#008069]'}
+    `}></div>
+  </div>
               <div className="flex-1">
                 <div className="flex items-center space-x-2">
-                  <h3 className="font-semibold text-sm">ConnectCar</h3>
-                  {/* Selo de Verificação Personalizado */}
-                  <img 
-                    src="https://i.ibb.co/QFzkzn2p/ABA-NAVEGADOR-IMAGEM-FAVICON-3.jpg" 
-                    alt="Verificado"
-                    className="w-4 h-4 object-contain rounded-sm"
-                  />
-                </div>
+  <h3 className="font-semibold text-sm">ConnectCar</h3>
+  {/* Selo de Verificação Personalizado */}
+  <img 
+    src={verificadoImg}
+    alt="Verificado"
+    className="w-4 h-4 object-contain rounded-sm"
+  />
+</div>
                 <div className="text-xs opacity-90 transition-all duration-300">
                   {headerStatus === 'typing' ? (
                     <div className="flex items-baseline space-x-1">
@@ -719,20 +734,20 @@ const scrollToSection = (sectionId) => {
 // 🖼️ CORREÇÃO CARROSSEL: Arrays de imagens para os carrosséis (agora com 6 imagens)
 // 🖼️ CARROSSEL: Arrays de imagens para os carrosséis (sem links)
 const carouselImages1 = [
-  { image: responsiveDevicesImage },
-  { image: Portifolio4 },
-  { image: Portifolio1 },
-  { image: Portifolio2 },
-  { image: Portifolio3 },
+  { image: planoderastreamentoparaveículoscomerciais },
+  { image: empresaderastreamentodefrotasGPS },
+  { image: contratarrastreamentodefrotas },
+  { image: preçorastreamentoveicularparaempresas },
+  { image: melhorrastreadorparafrotaempresarial },
 ];
 
 const carouselImages2 = [
-  { image: websiteShowcaseImage },
-  { image: responsiveDevicesImage },
-  { image: Portifolio4 },
-  { image: Portifolio3 },
-  { image: Portifolio2 },
-  { image: Portifolio1 },
+  { image: rastreamentoveicularcombloqueioremotopreço },
+  { image: planoderastreamentoparaveículoscomerciais },
+  { image: empresaderastreamentodefrotasGPS },
+  { image: melhorrastreadorparafrotaempresarial },
+  { image: preçorastreamentoveicularparaempresas },
+  { image: contratarrastreamentodefrotas },
 ];
 
 // 🖼️ CORREÇÃO CARROSSEL: Rotação automática das imagens
@@ -905,7 +920,7 @@ useEffect(() => {
             {/* Desktop Menu */}
             <nav className="hidden md:flex space-x-8">
               {[
-                { id: 'sites', label: 'Sites profissionais' },
+                { id: 'sites', label: 'Gerenciamento de Frotas' },
                 { id: 'planos', label: 'Planos' },
                 { id: 'portfolio', label: 'Rastreamento em Tempo Real' },
                 { id: 'contato', label: 'Contato' },
@@ -1026,7 +1041,7 @@ useEffect(() => {
   <nav className="mt-4 pb-4 border-t pt-4">
     <div className="flex flex-col space-y-4">
       {[
-        { id: 'sites', label: 'Sites profissionais' },
+        { id: 'sites', label: 'Gerenciamento de Frotas' },
         { id: 'planos', label: 'Planos' },
         { id: 'portfolio', label: 'Rastreamento em Tempo Real' },
         { id: 'contato', label: 'Contato' },
@@ -1516,8 +1531,8 @@ useEffect(() => {
             <div className="lg:order-1">
   <div className="block">
     <img 
-      src={websiteShowcaseImage} 
-      alt="Showcase de sites profissionais"
+      src={rastreamentoveicularcombloqueioremotopreço} 
+      alt="Showcase de Gerenciamento de Frotas"
       className="w-full rounded-lg shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105"
     />
   </div>
@@ -1598,7 +1613,7 @@ useEffect(() => {
                     }`}>5+ anos no mercado</h3>
                     <p className={`transition-colors duration-300 ${
                       isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                    }`}>criando sites profissionais</p>
+                    }`}>criando Gerenciamento de Frotas</p>
                   </div>
                 </div>
                 
@@ -1652,7 +1667,7 @@ useEffect(() => {
             <div className="grid grid-cols-2 gap-4">
               {/* 🖼️ CORREÇÃO 3: Zoom suave com sombreamento específico nas imagens */}
               <img 
-                src={happyClientsImage} 
+                src={clientessatisfeitosrastreamentofrotas} 
                 alt="Clientes satisfeitos da ConnectWeb em reunião de negócios demonstrando sucesso"
                 className="w-full rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105"
                 style={{
@@ -1666,7 +1681,7 @@ useEffect(() => {
                 }}
               />
               <img 
-                src={businessPeopleImage} 
+                src={atendimentorastreamentofrotasempresa} 
                 alt="Equipe profissional da ConnectWeb trabalhando em projetos de sites"
                 className="w-full rounded-lg shadow-lg mt-8 transition-all duration-300 ease-in-out transform hover:scale-105"
                 style={{
@@ -2294,7 +2309,7 @@ useEffect(() => {
         <div className="relative container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
             <h2 className="text-4xl lg:text-5xl font-bold">
-              Aumente o alcance da sua empresa online.
+              Aumente o controle e segurança do seu veículo ou frota
               <br />
           
             </h2>
@@ -2355,12 +2370,12 @@ useEffect(() => {
           >
             {/* Imagem do Google Meu Negócio com dimensões 400x100 */}
             <img 
-              src="https://i.ibb.co/ynMGF25p/RODA-P-IMAGEM-GOOGLE-MEU-NEG-CIO-DEFINITIVA.png" 
-              alt="Google Meu Negócio" 
-              className="w-[200px] h-[30px] object-contain"
-              width="400"
-              height="100"
-            />
+  src={googleMeuNegocioImg}
+  alt="Google Meu Negócio" 
+  className="w-[200px] h-[30px] object-contain"
+  width="400"
+  height="100"
+/>
           </a>
         </div>
       </div>
@@ -2368,7 +2383,7 @@ useEffect(() => {
       <div>
         <h3 className={`text-lg font-bold mb-4 transition-colors duration-300 ${
           isDarkMode ? 'text-gray-100' : 'text-gray-800'
-        }`}>Sites Profissionais</h3>
+        }`}>Gerenciamento de Frotas</h3>
         <ul className={`space-y-2 transition-colors duration-300 ${
           isDarkMode ? 'text-gray-300' : 'text-gray-600'
         }`}>
@@ -2473,7 +2488,7 @@ useEffect(() => {
         }`}>
           <li><button onClick={() => scrollToSection('sites')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
             isDarkMode ? 'text-gray-300' : 'text-gray-700'
-          }`}>Sites Profissionais</button></li>
+          }`}>Gerenciamento de Frotas</button></li>
           <li><button onClick={() => scrollToSection('planos')} className={`hover:text-orange-600 transition-colors duration-300 text-left ${
             isDarkMode ? 'text-gray-300' : 'text-gray-700'
           }`}>Planos</button></li>
