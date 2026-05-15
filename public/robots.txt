@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.connectcar123.com/sitemap.xml

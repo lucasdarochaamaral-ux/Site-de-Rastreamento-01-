@@ -1,7 +1,10 @@
 {
-  "name": "connectweb-site",
+  "name": "connectcar-rastreamento",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "ConnectCar - Rastreamento Veicular e Gestão de Frotas em Tempo Real",
+  "author": "ConnectCar",
+  "homepage": "https://www.connectcar123.com/",
   "type": "module",
   "scripts": {
     "dev": "vite",
