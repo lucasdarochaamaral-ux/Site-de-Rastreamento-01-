@@ -240,16 +240,16 @@ const ChatBot = ({ isDarkMode }) => {
     
     switch (option) {
       case 'orcamento':
-        message = 'Olá! Gostaria de receber um orçamento para rastreamento do meu veículo.';
+        message = 'Olá, tudo bem! Gostaria de saber mais sobre o serviço de rastreamento.';
         break;
       case 'preco':
-        message = 'Olá! Gostaria de saber mais sobre os preços do rastreamento.';
+        message = 'Olá, tudo bem! Gostaria de saber mais sobre o serviço de rastreamento.';
         break;
       case 'funcionamento':
-        message = 'Olá! Como funciona o sistema de rastreamento?';
+        message = 'Olá, tudo bem! Gostaria de saber mais sobre o serviço de rastreamento.';
         break;
       default:
-        message = 'Olá! Gostaria de informações sobre rastreamento veicular.';
+        message = 'Olá, tudo bem! Gostaria de saber mais sobre o serviço de rastreamento.';
     }
 
     // Adiciona mensagem do usuário
@@ -595,6 +595,7 @@ function App() {
   const [activeSection, setActiveSection] = useState('')
   const [currentCarouselImage1, setCurrentCarouselImage1] = useState(0)
   const [currentCarouselImage2, setCurrentCarouselImage2] = useState(0)
+  const [showTopButton, setShowTopButton] = useState(false)
   
   // 🖼️ CORREÇÃO CARROSSEL: Estados para controlar imagens do carrossel
 
@@ -607,6 +608,22 @@ function App() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('')
+
+  // Mostrar botão "Voltar ao Topo" após 20% da rolagem
+  useEffect(() => {
+    const checkScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+      const scrollPercentage = (scrollTop / scrollHeight) * 100
+      
+      setShowTopButton(scrollPercentage >= 20)
+    }
+    
+    window.addEventListener('scroll', checkScroll)
+    checkScroll() // Verifica ao carregar
+    
+    return () => window.removeEventListener('scroll', checkScroll)
+  }, [])
 
 useEffect(() => {
   const handleScroll = () => {
@@ -1134,9 +1151,10 @@ useEffect(() => {
 <div className="space-y-0.5 sm:space-y-2.5 w-[104%] relative z-10">
   <div className="overflow-visible">
     <h1 
-      className="text-white text-5xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-none md:leading-tight tracking-tight opacity-0 transform transition-all duration-700 ease-out"
+      className="text-white text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight md:leading-tight tracking-tight opacity-0 transform transition-all duration-700 ease-out"
       style={{
-        animation: 'slideUp 3.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards'
+        animation: 'slideUp 3.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards',
+        marginTop: 'clamp(-15px, -5vw, -10px)'
       }}
     >
       Localize seu veículo ou frota em tempo real por app e computador
@@ -1197,6 +1215,7 @@ useEffect(() => {
         </div>
       </section>
 
+
       {/* Secondary Hero */}
        <section className="relative py-20 overflow-hidden -mt-[1px]">
         {/* 🎯 CORREÇÃO 2: Imagem de fundo completamente livre, sem overlay esbranquiçado */}
@@ -1208,12 +1227,12 @@ useEffect(() => {
         <div className="absolute inset-0 bg-black/0"></div>
         <div className="relative container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
-            <h2 className="text-4xl lg:text-5xl font-bold leading-tight text-white drop-shadow-lg">
-              {/* 🎯 CORREÇÃO 2: Texto branco com sombra para contraste na imagem livre */}
-              Evite ligações para motoristas, obtenha informações em poucos cliques.
-              <br />
-              <span className="text-white-400 drop-shadow-lg"></span>
-            </h2>
+<h2 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white drop-shadow-lg">
+  {/* 🎯 CORREÇÃO 2: Texto branco com sombra para contraste na imagem livre */}
+  Evite ligações para motoristas, obtenha informações em poucos cliques.
+  <br />
+  <span className="text-white-400 drop-shadow-lg"></span>
+</h2>
             <p className="text-xl text-white drop-shadow-md">
               {/* 🎯 CORREÇÃO 2: Parágrafo com texto branco e sombra para contraste */}
               Com nosso aplicativo você economiza combustível, melhora prazos em entregas e toma decisões com base em registros sólidos.
@@ -1230,12 +1249,11 @@ useEffect(() => {
         <div className="container mx-auto px-5 sm:px-6 lg:px-8">
           {/* ✅ CORREÇÃO 1.4: Padding lateral consistente */}
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 transition-colors duration-300 ${
-              isDarkMode ? 'text-gray-100' : 'text-gray-800'
-            }`}>
-              {/* ✅ CORREÇÃO 2.3: H2 com base 24px (text-2xl) responsivo */}
-              Conheça nossas soluções para pessoa física e empresas, aumente sua produtividade com funcionalidades exclusivas.
-            </h2>
+          <h2 className={`text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 transition-colors duration-300 ${
+  isDarkMode ? 'text-gray-100' : 'text-gray-800'
+}`}>
+  Conheça nossas soluções para pessoa física e empresas, aumente sua produtividade com funcionalidades exclusivas.
+</h2>
             <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
           </div>
 
@@ -1618,7 +1636,7 @@ useEffect(() => {
                     }`}>5+ anos no mercado</h3>
                     <p className={`transition-colors duration-300 ${
                       isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                    }`}>criando Gerenciamento de Frotas</p>
+                    }`}>Otimizando logísticas</p>
                   </div>
                 </div>
                 
@@ -1632,7 +1650,7 @@ useEffect(() => {
                     }`}>Satisfação garantida</h3>
                     <p className={`transition-colors duration-300 ${
                       isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                    }`}>atendimento de excelência</p>
+                    }`}>Atendimento de excelência</p>
                   </div>
                 </div>
                 
@@ -1647,10 +1665,10 @@ useEffect(() => {
                   <div>
                     <h3 className={`text-2xl font-bold transition-colors duration-300 ${
                       isDarkMode ? 'text-gray-100' : 'text-gray-800'
-                    }`}>Experiência e compromisso</h3>
+                    }`}>Equipe dedicada</h3>
                     <p className={`transition-colors duration-300 ${
                       isDarkMode ? 'text-gray-300' : 'text-gray-600'
-                    }`}>Profissionais focados em auxiliar o cliente em todo o processo</p>
+                    }`}>Profissionais ágeis e aptos</p>
                   </div>
                 </div>
               </div>
@@ -2462,11 +2480,60 @@ useEffect(() => {
               ? 'border-gray-700 text-gray-300' 
               : 'border-gray-200 text-gray-600'
           }`}>
-            <p>&copy; ConnectCar LTDA. Todos os direitos reservados.</p>
+            <p>&copy; ConnectCar ltda - Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
       <ChatBot isDarkMode={isDarkMode} />
+      
+      {/* Botão Voltar ao Topo */}
+      <div 
+        style={{
+          position: 'fixed',
+          bottom: '50px',
+          left: '20px',
+          backgroundColor: 'rgba(0,0,0,0.6)',
+          backdropFilter: 'blur(8px)',
+          color: 'white',
+          width: 'auto',
+          height: '36px',
+          borderRadius: '20px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '8px',
+          padding: '0 16px',
+          cursor: 'pointer',
+          zIndex: 9999,
+          boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
+          transition: 'all 0.3s ease',
+          fontFamily: 'sans-serif',
+          fontSize: '12px',
+          fontWeight: '500',
+          border: '1px solid rgba(255,255,255,0.2)',
+          opacity: showTopButton ? 1 : 0,
+          visibility: showTopButton ? 'visible' : 'hidden',
+          transform: showTopButton ? 'translateY(0)' : 'translateY(20px)'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.8)'
+          e.currentTarget.style.transform = 'scale(1.05)'
+          e.currentTarget.style.border = '1px solid rgba(255,255,255,0.4)'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.6)'
+          e.currentTarget.style.transform = 'scale(1)'
+          e.currentTarget.style.border = '1px solid rgba(255,255,255,0.2)'
+        }}
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }}
+      >
+        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+        <span>▲ Topo</span>
+      </div>
     </div>
   )
 }
